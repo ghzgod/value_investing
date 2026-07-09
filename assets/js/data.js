@@ -83,10 +83,60 @@ export async function fetchChart(ticker, range = '20y', interval = '1mo') {
   };
 }
 
-// Fundamentals (EPS, growth, sector, market cap). The live quoteSummary endpoint
-// is crumb-gated and unreachable from a static page, so we read straight from the
-// bundled snapshot; the UI falls back to manual entry when a ticker isn't in it.
-export function fetchFundamentals(ticker, snapshot) {
+// Parse stockanalysis.com's human-formatted numbers: "4.36B" -> 4.36e9,
+// "17.49" -> 17.49, "n/a"/"-"/"" -> null.
+function saNum(v) {
+  if (v == null) return null;
+  const str = String(v).trim();
+  if (!str || str === 'n/a' || str === '-') return null;
+  const m = str.replace(/[$,%]/g, '').match(/^(-?[\d.]+)\s*([TBMK]?)/i);
+  if (!m) return null;
+  const mult = { T: 1e12, B: 1e9, M: 1e6, K: 1e3, '': 1 }[m[2].toUpperCase()];
+  const n = parseFloat(m[1]) * mult;
+  return isFinite(n) ? n : null;
+}
+
+// Live fundamentals for ANY US ticker from stockanalysis.com. Their API sends
+// `access-control-allow-origin: *`, so we hit it directly (fast, no relay), then
+// fall back to the jina reader if that's blocked. Returns null on miss.
+const EMPTY_FUND = { source: 'none', name: null, sector: null, eps: null, forwardEps: null,
+  earningsGrowth: null, growth: null, revGrowth: null, marketCap: null, pe: null, pb: null };
+async function fetchLiveFundamentals(ticker) {
+  const path = `stockanalysis.com/api/symbol/s/${encodeURIComponent(ticker)}/overview`;
+  let json = null;
+  try {
+    json = JSON.parse(await fetchText(`https://${path}`, {}, 6000));
+  } catch (_) {
+    try { json = extractJson(await fetchText(`https://r.jina.ai/https://${path}`, { 'x-return-format': 'text' }, 7000)); }
+    catch (__) { return null; }
+  }
+  const d = json && json.data;
+  if (!d) return null;
+  const eps = saNum(d.eps);
+  const pe = saNum(d.peRatio);
+  const fwdPE = saNum(d.forwardPE);
+  const mktCap = saNum(d.marketCap);
+  const shares = saNum(d.sharesOut);
+  // Derive a forward EPS (for growth estimation) when a forward P/E is quoted:
+  // price = marketCap / sharesOut, forwardEps = price / forwardPE.
+  let forwardEps = null;
+  if (fwdPE && fwdPE > 0 && mktCap && shares && shares > 0) {
+    forwardEps = (mktCap / shares) / fwdPE;
+  }
+  if (eps == null && mktCap == null) return null; // nothing usable
+  return {
+    source: 'live',
+    name: d.name || null, sector: null,
+    eps, forwardEps,
+    earningsGrowth: null, growth: null, revGrowth: null,
+    marketCap: mktCap, pe, pb: null,
+  };
+}
+
+// Fundamentals (EPS, growth, sector, market cap). S&P 500 names come from the
+// bundled snapshot instantly; any other ticker is fetched live from
+// stockanalysis.com. Never rejects — the UI falls back to manual entry on a miss.
+export async function fetchFundamentals(ticker, snapshot) {
   const s = snapshot?.byTicker?.get(ticker);
   if (s) {
     return {
@@ -100,8 +150,11 @@ export function fetchFundamentals(ticker, snapshot) {
       marketCap: s.marketCap, pe: s.pe, pb: s.pb,
     };
   }
-  return { source: 'none', name: null, sector: null, eps: null, forwardEps: null,
-    earningsGrowth: null, growth: null, revGrowth: null, marketCap: null, pe: null, pb: null };
+  try {
+    const live = await fetchLiveFundamentals(ticker);
+    if (live) return live;
+  } catch (_) { /* fall through to none */ }
+  return { ...EMPTY_FUND };
 }
 
 // Live Moody's Seasoned Aaa corporate-bond yield (FRED series DAAA) – the real

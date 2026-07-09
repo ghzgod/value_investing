@@ -208,7 +208,7 @@ function renderResult(c, { cachedAt = null } = {}) {
   }
   left.appendChild(table);
 
-  const srcMap = { live: 'live Yahoo Finance', snapshot: 'bundled S&P 500 snapshot', none: 'no fundamentals found' };
+  const srcMap = { live: 'live · stockanalysis.com', snapshot: 'bundled S&P 500 snapshot', none: 'no fundamentals found' };
   const src = el('p', 'src-note');
   src.append('Fundamentals: ');
   src.appendChild(el('code', null, srcMap[f.source] || f.source));
