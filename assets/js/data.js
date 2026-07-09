@@ -1,14 +1,14 @@
-// data.js — network layer. GitHub Pages is static (no backend), so yfinance
+// data.js – network layer. GitHub Pages is static (no backend), so yfinance
 // (Python) can't run in the browser. We read Yahoo Finance's public JSON
-// endpoints — the same data yfinance wraps — through CORS proxies, plus a
+// endpoints – the same data yfinance wraps – through CORS proxies, plus a
 // locally generated snapshot (data/sp500.json, built with yfinance) for the
 // fundamentals the live browser path can't reach.
 //
 // Proxy reality (measured 2026-07-09, see project notes):
-//   • corsproxy.io + allorigins  — DNS-blackholed / connection-refused (dead)
-//   • codetabs                    — hangs the full timeout (unusable)
-//   • r.jina.ai                   — WORKS for the Yahoo chart JSON (reader proxy)
-//   • proxy.cors.sh               — WORKS for chart JSON *and* the FRED CSV
+//   • corsproxy.io + allorigins  – DNS-blackholed / connection-refused (dead)
+//   • codetabs                    – hangs the full timeout (unusable)
+//   • r.jina.ai                   – WORKS for the Yahoo chart JSON (reader proxy)
+//   • proxy.cors.sh               – WORKS for chart JSON *and* the FRED CSV
 // So we race jina + cors.sh for price/history and use cors.sh for the AAA yield.
 // Yahoo's quoteSummary (EPS/growth) is crumb-gated and returns empty/401 from a
 // browser no matter the proxy, so fundamentals come from the bundled snapshot.
@@ -51,7 +51,7 @@ async function fetchYahooJson(yahooUrl, { timeout = 6500 } = {}) {
   try {
     return await Promise.any(attempts);
   } catch (err) {
-    throw new Error('Live price feed is busy right now — try again in a moment.');
+    throw new Error('Live price feed is busy right now – try again in a moment.');
   }
 }
 
@@ -104,11 +104,11 @@ export function fetchFundamentals(ticker, snapshot) {
     earningsGrowth: null, growth: null, revGrowth: null, marketCap: null, pe: null, pb: null };
 }
 
-// Live Moody's Seasoned Aaa corporate-bond yield (FRED series DAAA) — the real
+// Live Moody's Seasoned Aaa corporate-bond yield (FRED series DAAA) – the real
 // "Y" in Graham's formula, so it isn't a hand-typed assumption. cors.sh is the
 // only proxy that fetches the FRED CSV; we cache the result and fall back to the
 // last-known value if the feed is unavailable.
-// Returns { yieldPct, asOf, source } — `asOf` is the FRED observation date on a
+// Returns { yieldPct, asOf, source } – `asOf` is the FRED observation date on a
 // live read, or null when we fall back. The UI keys off these field names.
 const AAA_FALLBACK = 5.7; // Moody's Aaa, ~mid-2026
 let _aaaPromise;

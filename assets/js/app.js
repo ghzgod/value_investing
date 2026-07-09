@@ -1,4 +1,4 @@
-// app.js — UI controller. Wires the DOM to the pure logic + data layer.
+// app.js – UI controller. Wires the DOM to the pure logic + data layer.
 import {
   grahamValue, discount, estimateGrowth, conservativeEps, runBacktest,
 } from './finance.js';
@@ -26,24 +26,24 @@ function cacheSet(ticker, data) {
   // keep the cache bounded: drop oldest beyond 30 tickers
   const keys = Object.keys(store).sort((a, b) => store[b].ts - store[a].ts);
   for (const k of keys.slice(30)) delete store[k];
-  try { localStorage.setItem(CACHE_KEY, JSON.stringify(store)); } catch (_) { /* quota — skip */ }
+  try { localStorage.setItem(CACHE_KEY, JSON.stringify(store)); } catch (_) { /* quota – skip */ }
 }
 
 // ---- formatting helpers ----
 const fmtMoney = (n, cur = 'USD') =>
   n == null || !isFinite(n)
-    ? '—'
+    ? '–'
     : new Intl.NumberFormat('en-US', { style: 'currency', currency: cur, maximumFractionDigits: 2 }).format(n);
-const fmtPct = (f, d = 1) => (f == null || !isFinite(f) ? '—' : `${(f * 100).toFixed(d)}%`);
+const fmtPct = (f, d = 1) => (f == null || !isFinite(f) ? '–' : `${(f * 100).toFixed(d)}%`);
 const fmtBig = (n) => {
-  if (n == null || !isFinite(n)) return '—';
+  if (n == null || !isFinite(n)) return '–';
   const a = Math.abs(n);
   if (a >= 1e12) return `$${(n / 1e12).toFixed(2)}T`;
   if (a >= 1e9) return `$${(n / 1e9).toFixed(2)}B`;
   if (a >= 1e6) return `$${(n / 1e6).toFixed(2)}M`;
   return fmtMoney(n);
 };
-const fmtSortino = (s) => (s === Infinity ? '∞' : s == null ? '—' : s.toFixed(2));
+const fmtSortino = (s) => (s === Infinity ? '∞' : s == null ? '–' : s.toFixed(2));
 // Safe DOM text node builder (never innerHTML with fetched/user data → no XSS).
 const el = (tag, cls, text) => {
   const n = document.createElement(tag);
@@ -70,7 +70,7 @@ function readAssumptions() {
 
 // ============================================================= appraisal
 // Recompute value/discount for `c` from its stored fundamentals + the current
-// g / Y inputs. Pure recalc — no network.
+// g / Y inputs. Pure recalc – no network.
 function revalue(c) {
   const damp = conservativeEps(c.fundamentals.eps, c.fundamentals.forwardEps);
   c.epsUsed = damp.eps;
@@ -97,7 +97,7 @@ async function appraise(rawTicker, { force = false } = {}) {
     return;
   }
 
-  // Fresh cache hit (≤10 min) renders instantly — no refetch, no spinner.
+  // Fresh cache hit (≤10 min) renders instantly – no refetch, no spinner.
   if (!force) {
     const hit = cacheGet(ticker);
     if (hit) { showResult(hit.data, { cachedAt: hit.ts }); saveHistory(hit.data); return; }
@@ -106,14 +106,14 @@ async function appraise(rawTicker, { force = false } = {}) {
   const status = loadingRow(`Appraising ${ticker}…`);
   result.replaceChildren(status);
   const slowTimer = setTimeout(() => {
-    status.lastChild.textContent = ` Appraising ${ticker}… public data relays are slow today — still fetching.`;
+    status.lastChild.textContent = ` Appraising ${ticker}… public data relays are slow today – still fetching.`;
   }, 6000);
   $('lookupBtn').disabled = true;
 
   try {
     const snapshot = await loadSnapshot();
     // Fundamentals never throw (they fall back to snapshot/none). Live chart
-    // (price + history) can fail on flaky public proxies — degrade gracefully.
+    // (price + history) can fail on flaky public proxies – degrade gracefully.
     // Fetch both in PARALLEL: this halves worst-case wait on slow relays.
     const [fundRes, chartRes] = await Promise.allSettled([
       fetchFundamentals(ticker, snapshot),
@@ -159,7 +159,7 @@ async function appraise(rawTicker, { force = false } = {}) {
     cacheSet(ticker, c);
     saveHistory(c);
   } catch (err) {
-    renderNotice(result, `Couldn’t appraise ${ticker}. ${err.message || 'Data source unavailable — try again in a moment.'}`);
+    renderNotice(result, `Couldn’t appraise ${ticker}. ${err.message || 'Data source unavailable – try again in a moment.'}`);
   } finally {
     clearTimeout(slowTimer);
     $('lookupBtn').disabled = false;
@@ -170,7 +170,7 @@ function renderResult(c, { cachedAt = null } = {}) {
   const result = $('result');
   result.replaceChildren();
 
-  // cached banner — instant ledger recalls say when the numbers are from
+  // cached banner – instant ledger recalls say when the numbers are from
   if (cachedAt) {
     const mins = Math.max(1, Math.round((Date.now() - cachedAt) / 60000));
     const note = el('p', 'cached-note');
@@ -193,11 +193,11 @@ function renderResult(c, { cachedAt = null } = {}) {
   const rows = [
     ['Market price', fmtMoney(c.price, c.currency)],
     ['Market cap', fmtBig(f.marketCap)],
-    ['EPS (trailing)', f.eps == null ? '—' : fmtMoney(f.eps, c.currency)],
+    ['EPS (trailing)', f.eps == null ? '–' : fmtMoney(f.eps, c.currency)],
     ...(c.epsDamped ? [['EPS used (damped)', fmtMoney(c.epsUsed, c.currency)]] : []),
     ['Growth used (g)', `${c.growthUsed.toFixed(1)}%`],
-    ['P/E', f.pe == null ? '—' : f.pe.toFixed(1)],
-    ['P/B', f.pb == null ? '—' : f.pb.toFixed(2)],
+    ['P/E', f.pe == null ? '–' : f.pe.toFixed(1)],
+    ['P/B', f.pb == null ? '–' : f.pb.toFixed(2)],
     ['AAA yield (Y)', `${c.aaaYield.toFixed(1)}%`],
   ];
   for (const [k, v] of rows) {
@@ -215,7 +215,7 @@ function renderResult(c, { cachedAt = null } = {}) {
   src.append('. Price: ');
   if (c.priceSource === 'snapshot') {
     src.appendChild(el('code', null, `snapshot ${c.snapshotDate || ''}`));
-    src.append(' (live feed busy — backtest paused).');
+    src.append(' (live feed busy – backtest paused).');
   } else {
     src.appendChild(el('code', null, 'live'));
     src.append('.');
@@ -236,7 +236,7 @@ function renderResult(c, { cachedAt = null } = {}) {
   right.appendChild(el('hr', 'verdict__divider'));
   const valRow = el('div', 'verdict__row');
   valRow.appendChild(el('span', 'verdict__label', 'Graham says'));
-  valRow.appendChild(el('span', 'verdict__num verdict__value', c.intrinsic == null ? '—' : fmtMoney(c.intrinsic, c.currency)));
+  valRow.appendChild(el('span', 'verdict__num verdict__value', c.intrinsic == null ? '–' : fmtMoney(c.intrinsic, c.currency)));
   right.appendChild(valRow);
 
   right.appendChild(verdictStamp(c.discount));
@@ -248,7 +248,7 @@ function renderResult(c, { cachedAt = null } = {}) {
 }
 
 // The Graham formula with THIS company's numbers plugged in, plus where each
-// number came from — the learning half of the tool.
+// number came from – the learning half of the tool.
 function buildFormulaCard(c) {
   const card = el('div', 'formula');
   card.appendChild(el('h3', 'formula__title', 'The math, shown honestly'));
@@ -258,7 +258,7 @@ function buildFormulaCard(c) {
     eq.textContent =
       `V = ${fmtMoney(c.epsUsed, c.currency)} × (8.5 + 2×${c.growthUsed.toFixed(1)}) × 4.4 ÷ ${c.aaaYield.toFixed(2)} = ${fmtMoney(c.intrinsic, c.currency)}`;
   } else {
-    eq.textContent = 'V = EPS × (8.5 + 2g) × 4.4 ÷ Y — needs positive earnings to work.';
+    eq.textContent = 'V = EPS × (8.5 + 2g) × 4.4 ÷ Y – needs positive earnings to work.';
   }
   card.appendChild(eq);
 
@@ -266,39 +266,39 @@ function buildFormulaCard(c) {
   const li = (text) => why.appendChild(el('li', null, text));
 
   if (c.epsDamped) {
-    li(`EPS: trailing earnings are ${fmtMoney(c.fundamentals.eps, c.currency)}, but analysts expect ${fmtMoney(c.fundamentals.forwardEps, c.currency)} next year — a windfall year shouldn't be capitalised forever, so we split the difference: ${fmtMoney(c.epsUsed, c.currency)}.`);
+    li(`EPS: trailing earnings are ${fmtMoney(c.fundamentals.eps, c.currency)}, but analysts expect ${fmtMoney(c.fundamentals.forwardEps, c.currency)} next year – a windfall year shouldn't be capitalised forever, so we split the difference: ${fmtMoney(c.epsUsed, c.currency)}.`);
   } else if (c.fundamentals.eps != null) {
     li(`EPS: trailing twelve-month earnings per share, ${fmtMoney(c.fundamentals.eps, c.currency)}.`);
   }
 
   const gi = c.growthInfo;
   if (gi?.basis === 'override') {
-    li(`g = ${c.growthUsed.toFixed(1)}% — your override from the inputs panel.`);
+    li(`g = ${c.growthUsed.toFixed(1)}% – your override from the inputs panel.`);
   } else if (gi?.parts?.length) {
     const partsTxt = gi.parts
       .map((p) => `${p.label}: ${p.pct >= 0 ? '+' : ''}${p.pct.toFixed(1)}%`)
       .join(' · ');
-    li(`g = ${c.growthUsed.toFixed(1)}%/yr — the conservative median of ${partsTxt}, capped at 15%. One hot quarter can't set it.`);
+    li(`g = ${c.growthUsed.toFixed(1)}%/yr – the conservative median of ${partsTxt}, capped at 15%. One hot quarter can't set it.`);
   } else {
-    li(`g = ${c.growthUsed.toFixed(1)}%/yr — neutral default; no growth data was available.`);
+    li(`g = ${c.growthUsed.toFixed(1)}%/yr – neutral default; no growth data was available.`);
   }
 
   const am = c.aaaMeta;
   if (am?.source === 'live' || am?.source === 'cache') {
-    li(`Y = ${c.aaaYield.toFixed(2)}% — Moody's AAA corporate bond yield (FRED, as of ${am.asOf}). Higher safe yields make future earnings worth less today.`);
+    li(`Y = ${c.aaaYield.toFixed(2)}% – Moody's AAA corporate bond yield (FRED, as of ${am.asOf}). Higher safe yields make future earnings worth less today.`);
   } else {
-    li(`Y = ${c.aaaYield.toFixed(2)}% — AAA corporate bond yield (static fallback; live feed unavailable).`);
+    li(`Y = ${c.aaaYield.toFixed(2)}% – AAA corporate bond yield (static fallback; live feed unavailable).`);
   }
   card.appendChild(why);
   return card;
 }
 
-// Sliders that recompute the valuation live — feel how g and Y move V.
+// Sliders that recompute the valuation live – feel how g and Y move V.
 function buildPlayground(c) {
   const box = el('div', 'playground');
   box.appendChild(el('h3', 'formula__title', 'Play with the inputs'));
   box.appendChild(el('p', 'playground__hint',
-    'Drag and watch the verdict move. Growth is the formula’s heaviest lever — exactly why optimistic analysts can justify any price.'));
+    'Drag and watch the verdict move. Growth is the formula’s heaviest lever – exactly why optimistic analysts can justify any price.'));
 
   const grid = el('div', 'playground__grid');
   const mkSlider = (label, min, max, step, val, fmt, onInput) => {
@@ -324,7 +324,7 @@ function buildPlayground(c) {
     revalue(c);
     // update verdict panel + formula card in place
     const num = document.querySelector('.verdict__value');
-    if (num) num.textContent = c.intrinsic == null ? '—' : fmtMoney(c.intrinsic, c.currency);
+    if (num) num.textContent = c.intrinsic == null ? '–' : fmtMoney(c.intrinsic, c.currency);
     const oldStamp = document.querySelector('.stamp');
     if (oldStamp) oldStamp.replaceWith(verdictStamp(c.discount));
     const card = document.querySelector('.formula');
@@ -353,10 +353,10 @@ function buildPlayground(c) {
   });
 
   const buyText = () => {
-    if (!(c.intrinsic > 0)) return 'No intrinsic value — the buy rule never triggers.';
+    if (!(c.intrinsic > 0)) return 'No intrinsic value – the buy rule never triggers.';
     const buyAt = c.intrinsic * (1 - thr / 100);
     const trig = c.price <= buyAt;
-    return `Buy trigger: price ≤ ${fmtMoney(buyAt, c.currency)} (${thr.toFixed(0)}% below value) — at ${fmtMoney(c.price, c.currency)} today that's ${trig ? 'a BUY' : 'no trade'}.`;
+    return `Buy trigger: price ≤ ${fmtMoney(buyAt, c.currency)} (${thr.toFixed(0)}% below value) – at ${fmtMoney(c.price, c.currency)} today that's ${trig ? 'a BUY' : 'no trade'}.`;
   };
   const buyOut = el('p', 'playground__buy', buyText());
 
@@ -391,7 +391,7 @@ function verdictStamp(disc) {
 // Manual EPS / growth entry when automatic fundamentals are missing.
 function buildManualEntry(c) {
   const box = el('div', 'manual');
-  box.appendChild(el('p', null, 'No earnings found automatically — enter them to value it:'));
+  box.appendChild(el('p', null, 'No earnings found automatically – enter them to value it:'));
   const epsL = el('label', null, 'EPS');
   const epsI = el('input'); epsI.type = 'number'; epsI.step = '0.01'; epsI.placeholder = '5.00';
   epsL.appendChild(epsI);
@@ -436,7 +436,7 @@ function runBacktestUI() {
 
   if (current.intrinsic == null || current.intrinsic <= 0) {
     const note = el('p', 'notice notice--info',
-      'No intrinsic value, so the value-timing rule never triggers — only buy-and-hold is shown.');
+      'No intrinsic value, so the value-timing rule never triggers – only buy-and-hold is shown.');
     out.appendChild(note);
   }
 
@@ -466,7 +466,7 @@ function runBacktestUI() {
   const beat = bt.strategy.finalValue > bt.hold.finalValue;
   const v = el('p', 'bt-verdict');
   v.textContent = beat
-    ? `Over ${bt.years.toFixed(1)} years, timing the discount beat buy-and-hold — the exception, not the rule.`
+    ? `Over ${bt.years.toFixed(1)} years, timing the discount beat buy-and-hold – the exception, not the rule.`
     : `Over ${bt.years.toFixed(1)} years, simply holding beat timing the discount. Just like the video found.`;
   out.appendChild(v);
 }
@@ -604,7 +604,7 @@ function renderHistory() {
     li.appendChild(el('span', 'history__tk', h.ticker));
     li.appendChild(el('span', 'history__co', h.name || ''));
     const d = el('span', 'history__disc');
-    if (h.discount == null) { d.textContent = '—'; }
+    if (h.discount == null) { d.textContent = '–'; }
     else { d.textContent = (h.discount >= 0 ? '▼ ' : '▲ ') + fmtPct(Math.abs(h.discount), 0);
       d.style.color = h.discount >= 0.1 ? 'var(--value)' : h.discount <= -0.1 ? 'var(--market)' : 'var(--gold)'; }
     li.appendChild(d);
@@ -683,13 +683,13 @@ function initTheme() {
     const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
     localStorage.setItem(THEME_KEY, next);
     applyTheme(next);
-    // canvas chart bakes theme colors in at draw time — redraw if one is up
+    // canvas chart bakes theme colors in at draw time – redraw if one is up
     if (current && !$('backtest').hidden && $('btOutput').querySelector('canvas')) runBacktestUI();
   });
 }
 
 // Pull the live AAA yield and make it the default Y (unless the user already
-// typed their own). The input stays editable — live data, not gospel.
+// typed their own). The input stays editable – live data, not gospel.
 async function initAAAYield() {
   aaaLive = await fetchAAAYield();
   const input = $('aaaYield');
@@ -699,7 +699,7 @@ async function initAAAYield() {
   const note = $('aaaNote');
   if (note) {
     note.textContent = aaaLive.source === 'fallback'
-      ? 'AAA yield: live feed unavailable — using a static 4.9%. Edit it if you know better.'
+      ? 'AAA yield: live feed unavailable – using a static 4.9%. Edit it if you know better.'
       : `AAA yield: Moody's Aaa corporate bonds via FRED, as of ${aaaLive.asOf}.`;
   }
 }

@@ -1,4 +1,4 @@
-// finance.js — pure valuation & backtest logic (no DOM, no network).
+// finance.js – pure valuation & backtest logic (no DOM, no network).
 // Works as an ES module in both the browser and Node (for tests).
 
 // Benjamin Graham's revised intrinsic-value formula (the one from the video):
@@ -149,14 +149,14 @@ export function normalizeGrowth(growthFraction, cap = 20) {
 }
 
 // Graham's g is meant to be the expected LONG-RUN growth rate, but yfinance's
-// earningsGrowth is a single quarter's year-over-year change — for a windfall
+// earningsGrowth is a single quarter's year-over-year change – for a windfall
 // year it reads +300% and, capped naively, hands every insurer a 43x earnings
 // multiple. Estimate g from three independent signals and take their
 // CONSERVATIVE median (lower-middle when the count is even):
 //   1. earnings growth (quarterly YoY, spiky)
 //   2. revenue growth (stable, hard to fake)
 //   3. analyst-implied growth: forward EPS vs trailing EPS
-// Clamped to [0, 15] — Graham warned against paying for hyper-growth.
+// Clamped to [0, 15] – Graham warned against paying for hyper-growth.
 export function estimateGrowth({ earningsGrowth, revGrowth, eps, forwardEps } = {}, cap = 15) {
   const parts = [];
   if (isFinite(earningsGrowth)) parts.push({ label: 'earnings growth (last quarter, YoY)', pct: earningsGrowth * 100 });

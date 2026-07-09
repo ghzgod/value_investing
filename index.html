@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Value Investor — intrinsic value, backtested</title>
+<title>The Value Investor – intrinsic value, backtested</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23262433'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='900' fill='%23f5f1e6' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E" />
 <meta name="description" content="Look up any stock's Graham intrinsic value versus its market price, backtest the value-timing strategy, and scan the S&P 500 for undervalued names." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,7 +26,7 @@
 
 <header class="masthead">
   <div class="masthead__top">
-    <span class="masthead__dateline" id="dateline">—</span>
+    <span class="masthead__dateline" id="dateline">–</span>
     <span class="masthead__right">
       <span class="masthead__vol">Vol. I · Graham Method</span>
       <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch edition">☾</button>
@@ -34,7 +34,7 @@
   </div>
   <h1 class="masthead__title">The Value&nbsp;Investor</h1>
   <p class="masthead__sub">
-    What is a company <em>really</em> worth — and does buying it cheap actually pay?
+    What is a company <em>really</em> worth – and does buying it cheap actually pay?
     <button class="footnote" id="helpBtn" aria-label="What is value investing?">?</button>
   </p>
 </header>
@@ -57,7 +57,7 @@
 
     <div class="assumptions" id="assumptions">
       <details>
-        <summary>Inputs — live where possible, yours to tweak</summary>
+        <summary>Inputs – live where possible, yours to tweak</summary>
         <div class="assumptions__grid">
           <label>AAA bond yield <span>%</span>
             <input id="aaaYield" type="number" step="0.1" min="0.1" value="4.9" />
@@ -71,7 +71,7 @@
         </div>
         <p class="src-note" id="aaaNote">AAA yield: fetching the live rate…</p>
         <p class="src-note">Growth is estimated per company from earnings, revenue, and analyst forward
-           estimates — the conservative median of the three. Every appraisal shows its work below the verdict.</p>
+           estimates – the conservative median of the three. Every appraisal shows its work below the verdict.</p>
       </details>
     </div>
   </section>
@@ -111,7 +111,7 @@
       <h2 class="h-rule">Your ledger</h2>
       <button class="btn btn--ghost btn--sm" id="clearHistory" hidden>Clear</button>
     </div>
-    <p class="history__empty" id="historyEmpty">Appraisals you run are saved here in your browser — nothing leaves this device.</p>
+    <p class="history__empty" id="historyEmpty">Appraisals you run are saved here in your browser – nothing leaves this device.</p>
     <ul class="history__list" id="historyList"></ul>
   </section>
 </main>
@@ -130,35 +130,35 @@
     <h2 id="guideTitle" class="guide__title">Value investing, honestly</h2>
 
     <div class="guide__body">
-      <p><strong>The idea.</strong> A company has a <em>true worth</em> — its intrinsic value — built from
+      <p><strong>The idea.</strong> A company has a <em>true worth</em> – its intrinsic value – built from
       fundamentals like earnings and growth. Its <em>market price</em> swings around with public sentiment.
       When price falls well below intrinsic value, the stock trades “at a discount.” Buy the discount, the
       theory goes, and profit as the price recovers.</p>
 
-      <p><strong>How we measure it.</strong> This page uses Benjamin Graham's revised formula — the one from
+      <p><strong>How we measure it.</strong> This page uses Benjamin Graham's revised formula – the one from
       the video:</p>
       <p class="guide__eq">V = EPS · (8.5 + 2g) · 4.4 / Y</p>
       <ul class="guide__terms">
-        <li><b>EPS</b> — trailing earnings per share</li>
-        <li><b>g</b> — expected annual growth rate (%)</li>
-        <li><b>8.5</b> — the P/E Graham assigned a no-growth company</li>
-        <li><b>4.4</b> — the AAA corporate bond yield of Graham's era</li>
-        <li><b>Y</b> — today's AAA bond yield</li>
+        <li><b>EPS</b> – trailing earnings per share</li>
+        <li><b>g</b> – expected annual growth rate (%)</li>
+        <li><b>8.5</b> – the P/E Graham assigned a no-growth company</li>
+        <li><b>4.4</b> – the AAA corporate bond yield of Graham's era</li>
+        <li><b>Y</b> – today's AAA bond yield</li>
       </ul>
       <p>Compare <b>V</b> to the live price. Trading below it? Discounted. Above it? Expensive.</p>
 
       <p><strong>The uncomfortable part.</strong> A PhD physicist (LosingLoonies) actually backtested this.
       Buying the cheapest, most-discounted stocks <em>underperformed</em> simply buying and holding the S&P 500.
       The value strategy managed roughly <b>0.9% a year</b> versus about <b>8.6%</b> for buy-and-hold over the
-      same span — and it only really shone during the 2008 crash.</p>
+      same span – and it only really shone during the 2008 crash.</p>
 
       <p><strong>Why risk matters, not just return.</strong> A trade that returns 100% but risked a 50% chance
-      of going to zero is a losing bet if you repeat it — do it enough and you're wiped out. That's why we
+      of going to zero is a losing bet if you repeat it – do it enough and you're wiped out. That's why we
       report the <b>Sortino ratio</b>, which rewards return but only punishes <em>downside</em> volatility.
-      In the backtest, the value strategy's Sortino was about <b>0.17</b> versus <b>0.55</b> for buy-and-hold —
+      In the backtest, the value strategy's Sortino was about <b>0.17</b> versus <b>0.55</b> for buy-and-hold –
       roughly three times worse risk-adjusted.</p>
 
-      <p><strong>The takeaway.</strong> Value investing isn't a scam — it's that efficient markets have largely
+      <p><strong>The takeaway.</strong> Value investing isn't a scam – it's that efficient markets have largely
       caught up to it. Use this tool to see it for yourself: appraise a stock, then backtest it and watch how
       often “cheap” actually beats just holding.</p>
     </div>
