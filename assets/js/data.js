@@ -135,7 +135,7 @@ async function fetchLiveFundamentals(ticker) {
 
 // Fundamentals (EPS, growth, sector, market cap). S&P 500 names come from the
 // bundled snapshot instantly; any other ticker is fetched live from
-// stockanalysis.com. Never rejects — the UI falls back to manual entry on a miss.
+// stockanalysis.com. Never rejects – the UI falls back to manual entry on a miss.
 export async function fetchFundamentals(ticker, snapshot) {
   const s = snapshot?.byTicker?.get(ticker);
   if (s) {
