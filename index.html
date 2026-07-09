@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Value Investor — intrinsic value, backtested</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23262433'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='900' fill='%23f5f1e6' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E" />
+<meta name="description" content="Look up any stock's Graham intrinsic value versus its market price, backtest the value-timing strategy, and scan the S&P 500 for undervalued names." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<meta name="color-scheme" content="light dark" />
+<script>
+  // set theme before first paint to avoid a flash of the wrong edition
+  try {
+    var t = localStorage.getItem('vi.theme') ||
+      (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.dataset.theme = t;
+  } catch (e) {}
+</script>
+</head>
+<body>
+<!-- Signature: live ticker-tape of the most-discounted index names -->
+<div class="tape" id="tape" aria-hidden="true"><div class="tape__track" id="tapeTrack"></div></div>
+
+<header class="masthead">
+  <div class="masthead__top">
+    <span class="masthead__dateline" id="dateline">—</span>
+    <span class="masthead__right">
+      <span class="masthead__vol">Vol. I · Graham Method</span>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch edition">☾</button>
+    </span>
+  </div>
+  <h1 class="masthead__title">The Value&nbsp;Investor</h1>
+  <p class="masthead__sub">
+    What is a company <em>really</em> worth — and does buying it cheap actually pay?
+    <button class="footnote" id="helpBtn" aria-label="What is value investing?">?</button>
+  </p>
+</header>
+
+<main class="wrap">
+  <!-- Search -->
+  <section class="search" aria-label="Look up a stock">
+    <form id="lookupForm" class="search__form" autocomplete="off">
+      <label class="search__label" for="ticker">Ticker symbol</label>
+      <div class="search__row">
+        <input id="ticker" class="search__input" name="ticker" type="text"
+               inputmode="latin" maxlength="7" placeholder="AAPL" spellcheck="false"
+               aria-describedby="searchHint" />
+        <button class="btn btn--primary" type="submit" id="lookupBtn">Appraise</button>
+      </div>
+      <p class="search__hint" id="searchHint">
+        Enter a US-listed ticker. Prices are live; growth &amp; earnings come from the latest data available.
+      </p>
+    </form>
+
+    <div class="assumptions" id="assumptions">
+      <details>
+        <summary>Inputs — live where possible, yours to tweak</summary>
+        <div class="assumptions__grid">
+          <label>AAA bond yield <span>%</span>
+            <input id="aaaYield" type="number" step="0.1" min="0.1" value="4.9" />
+          </label>
+          <label>Growth override <span>% / yr</span>
+            <input id="growthOverride" type="number" step="0.5" placeholder="auto" />
+          </label>
+          <label>Buy discount <span>%</span>
+            <input id="discountThreshold" type="number" step="5" min="0" max="90" value="30" />
+          </label>
+        </div>
+        <p class="src-note" id="aaaNote">AAA yield: fetching the live rate…</p>
+        <p class="src-note">Growth is estimated per company from earnings, revenue, and analyst forward
+           estimates — the conservative median of the three. Every appraisal shows its work below the verdict.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Result -->
+  <section class="result" id="result" hidden aria-live="polite"></section>
+
+  <!-- Backtest -->
+  <section class="backtest" id="backtest" hidden>
+    <div class="backtest__head">
+      <h2 class="h-rule">Backtest the strategy</h2>
+      <form id="btForm" class="backtest__form">
+        <label>Starting balance
+          <div class="money"><span>$</span><input id="startBalance" type="number" min="100" step="100" value="10000" /></div>
+        </label>
+        <button class="btn" type="submit" id="btRun">Run backtest</button>
+      </form>
+    </div>
+    <div id="btOutput" class="backtest__output"></div>
+  </section>
+
+  <!-- Scan -->
+  <section class="scan">
+    <div class="scan__head">
+      <h2 class="h-rule">Scan the index</h2>
+      <button class="btn btn--ghost" id="scanBtn">Find undervalued S&amp;P 500 names</button>
+    </div>
+    <p class="scan__note" id="scanNote">
+      Ranks the S&amp;P 500 by discount to Graham intrinsic value using the bundled snapshot.
+    </p>
+    <div id="scanOutput" class="scan__output"></div>
+  </section>
+
+  <!-- History -->
+  <section class="history">
+    <div class="history__head">
+      <h2 class="h-rule">Your ledger</h2>
+      <button class="btn btn--ghost btn--sm" id="clearHistory" hidden>Clear</button>
+    </div>
+    <p class="history__empty" id="historyEmpty">Appraisals you run are saved here in your browser — nothing leaves this device.</p>
+    <ul class="history__list" id="historyList"></ul>
+  </section>
+</main>
+
+<footer class="colophon">
+  <p>Educational tool, not investment advice. Intrinsic value uses Benjamin Graham's revised formula
+     <span class="colophon__eq">V = EPS · (8.5 + 2g) · 4.4 / Y</span>.
+     Inspired by LosingLoonies' backtest <em>“I Backtested the Most Accepted Lie In Investing.”</em></p>
+</footer>
+
+<!-- Help / tutorial slide-over -->
+<aside class="guide" id="guide" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
+  <div class="guide__panel">
+    <button class="guide__close" id="guideClose" aria-label="Close">✕</button>
+    <p class="guide__kicker">Field guide</p>
+    <h2 id="guideTitle" class="guide__title">Value investing, honestly</h2>
+
+    <div class="guide__body">
+      <p><strong>The idea.</strong> A company has a <em>true worth</em> — its intrinsic value — built from
+      fundamentals like earnings and growth. Its <em>market price</em> swings around with public sentiment.
+      When price falls well below intrinsic value, the stock trades “at a discount.” Buy the discount, the
+      theory goes, and profit as the price recovers.</p>
+
+      <p><strong>How we measure it.</strong> This page uses Benjamin Graham's revised formula — the one from
+      the video:</p>
+      <p class="guide__eq">V = EPS · (8.5 + 2g) · 4.4 / Y</p>
+      <ul class="guide__terms">
+        <li><b>EPS</b> — trailing earnings per share</li>
+        <li><b>g</b> — expected annual growth rate (%)</li>
+        <li><b>8.5</b> — the P/E Graham assigned a no-growth company</li>
+        <li><b>4.4</b> — the AAA corporate bond yield of Graham's era</li>
+        <li><b>Y</b> — today's AAA bond yield</li>
+      </ul>
+      <p>Compare <b>V</b> to the live price. Trading below it? Discounted. Above it? Expensive.</p>
+
+      <p><strong>The uncomfortable part.</strong> A PhD physicist (LosingLoonies) actually backtested this.
+      Buying the cheapest, most-discounted stocks <em>underperformed</em> simply buying and holding the S&P 500.
+      The value strategy managed roughly <b>0.9% a year</b> versus about <b>8.6%</b> for buy-and-hold over the
+      same span — and it only really shone during the 2008 crash.</p>
+
+      <p><strong>Why risk matters, not just return.</strong> A trade that returns 100% but risked a 50% chance
+      of going to zero is a losing bet if you repeat it — do it enough and you're wiped out. That's why we
+      report the <b>Sortino ratio</b>, which rewards return but only punishes <em>downside</em> volatility.
+      In the backtest, the value strategy's Sortino was about <b>0.17</b> versus <b>0.55</b> for buy-and-hold —
+      roughly three times worse risk-adjusted.</p>
+
+      <p><strong>The takeaway.</strong> Value investing isn't a scam — it's that efficient markets have largely
+      caught up to it. Use this tool to see it for yourself: appraise a stock, then backtest it and watch how
+      often “cheap” actually beats just holding.</p>
+    </div>
+  </div>
+  <div class="guide__scrim" id="guideScrim"></div>
+</aside>
+
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

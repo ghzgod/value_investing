@@ -1,0 +1,2815 @@
+1
+00:00:00,000 --> 00:00:01,390
+
+Everything you've been told about value
+
+2
+00:00:01,390 --> 00:00:01,400
+Everything you've been told about value
+ 
+
+3
+00:00:01,400 --> 00:00:03,350
+Everything you've been told about value
+investing is a lie, and I can prove it
+
+4
+00:00:03,350 --> 00:00:03,360
+investing is a lie, and I can prove it
+ 
+
+5
+00:00:03,360 --> 00:00:05,390
+investing is a lie, and I can prove it
+with real back tests. I'm a PhD
+
+6
+00:00:05,390 --> 00:00:05,400
+with real back tests. I'm a PhD
+ 
+
+7
+00:00:05,400 --> 00:00:06,910
+with real back tests. I'm a PhD
+physicist, and building models that
+
+8
+00:00:06,910 --> 00:00:06,920
+physicist, and building models that
+ 
+
+9
+00:00:06,920 --> 00:00:09,070
+physicist, and building models that
+don't lie to me is my actual day job.
+
+10
+00:00:09,070 --> 00:00:09,080
+don't lie to me is my actual day job.
+ 
+
+11
+00:00:09,080 --> 00:00:10,990
+don't lie to me is my actual day job.
+So, I built a code that automates value
+
+12
+00:00:10,990 --> 00:00:11,000
+So, I built a code that automates value
+ 
+
+13
+00:00:11,000 --> 00:00:12,550
+So, I built a code that automates value
+investing to choose stocks that are
+
+14
+00:00:12,550 --> 00:00:12,560
+investing to choose stocks that are
+ 
+
+15
+00:00:12,560 --> 00:00:14,950
+investing to choose stocks that are
+cheap compared to their true value, and
+
+16
+00:00:14,950 --> 00:00:14,960
+cheap compared to their true value, and
+ 
+
+17
+00:00:14,960 --> 00:00:16,710
+cheap compared to their true value, and
+it did not work. But, through my GitHub
+
+18
+00:00:16,710 --> 00:00:16,720
+it did not work. But, through my GitHub
+ 
+
+19
+00:00:16,720 --> 00:00:18,230
+it did not work. But, through my GitHub
+repository, a lot of you pointed out
+
+20
+00:00:18,230 --> 00:00:18,240
+repository, a lot of you pointed out
+ 
+
+21
+00:00:18,240 --> 00:00:20,550
+repository, a lot of you pointed out
+some key issues in the back test. So,
+
+22
+00:00:20,550 --> 00:00:20,560
+some key issues in the back test. So,
+ 
+
+23
+00:00:20,560 --> 00:00:22,110
+some key issues in the back test. So,
+I'm going to rebuild this incorporating
+
+24
+00:00:22,110 --> 00:00:22,120
+I'm going to rebuild this incorporating
+ 
+
+25
+00:00:22,120 --> 00:00:23,630
+I'm going to rebuild this incorporating
+your comments to find out if value
+
+26
+00:00:23,630 --> 00:00:23,640
+your comments to find out if value
+ 
+
+27
+00:00:23,640 --> 00:00:25,950
+your comments to find out if value
+investing actually works.
+
+28
+00:00:25,950 --> 00:00:25,960
+investing actually works.
+ 
+
+29
+00:00:25,960 --> 00:00:28,030
+investing actually works.
+Value investing isn't some fringe idea.
+
+30
+00:00:28,030 --> 00:00:28,040
+Value investing isn't some fringe idea.
+ 
+
+31
+00:00:28,040 --> 00:00:29,630
+Value investing isn't some fringe idea.
+In fact, it might be the most tested
+
+32
+00:00:29,630 --> 00:00:29,640
+In fact, it might be the most tested
+ 
+
+33
+00:00:29,640 --> 00:00:31,550
+In fact, it might be the most tested
+idea in the history of finance. The
+
+34
+00:00:31,550 --> 00:00:31,560
+idea in the history of finance. The
+ 
+
+35
+00:00:31,560 --> 00:00:33,510
+idea in the history of finance. The
+concept is pretty simple. The value of a
+
+36
+00:00:33,510 --> 00:00:33,520
+concept is pretty simple. The value of a
+ 
+
+37
+00:00:33,520 --> 00:00:35,150
+concept is pretty simple. The value of a
+company can fluctuate depending on
+
+38
+00:00:35,150 --> 00:00:35,160
+company can fluctuate depending on
+ 
+
+39
+00:00:35,160 --> 00:00:37,470
+company can fluctuate depending on
+public opinion and market sentiment, but
+
+40
+00:00:37,470 --> 00:00:37,480
+public opinion and market sentiment, but
+ 
+
+41
+00:00:37,480 --> 00:00:39,550
+public opinion and market sentiment, but
+the company has value of which can be
+
+42
+00:00:39,550 --> 00:00:39,560
+the company has value of which can be
+ 
+
+43
+00:00:39,560 --> 00:00:41,430
+the company has value of which can be
+measured in different ways, for example,
+
+44
+00:00:41,430 --> 00:00:41,440
+measured in different ways, for example,
+ 
+
+45
+00:00:41,440 --> 00:00:43,030
+measured in different ways, for example,
+by looking at its revenue growth or
+
+46
+00:00:43,030 --> 00:00:43,040
+by looking at its revenue growth or
+ 
+
+47
+00:00:43,040 --> 00:00:44,870
+by looking at its revenue growth or
+debt. These fundamentals can be put
+
+48
+00:00:44,870 --> 00:00:44,880
+debt. These fundamentals can be put
+ 
+
+49
+00:00:44,880 --> 00:00:46,630
+debt. These fundamentals can be put
+together to calculate what a company is
+
+50
+00:00:46,630 --> 00:00:46,640
+together to calculate what a company is
+ 
+
+51
+00:00:46,640 --> 00:00:48,990
+together to calculate what a company is
+truly [music] worth, the intrinsic
+
+52
+00:00:48,990 --> 00:00:49,000
+truly [music] worth, the intrinsic
+ 
+
+53
+00:00:49,000 --> 00:00:50,950
+truly [music] worth, the intrinsic
+value. And when the market value, or
+
+54
+00:00:50,950 --> 00:00:50,960
+value. And when the market value, or
+ 
+
+55
+00:00:50,960 --> 00:00:52,590
+value. And when the market value, or
+what it's currently trading at, falls
+
+56
+00:00:52,590 --> 00:00:52,600
+what it's currently trading at, falls
+ 
+
+57
+00:00:52,600 --> 00:00:55,070
+what it's currently trading at, falls
+far below the intrinsic value, we say
+
+58
+00:00:55,070 --> 00:00:55,080
+far below the intrinsic value, we say
+ 
+
+59
+00:00:55,080 --> 00:00:56,310
+far below the intrinsic value, we say
+that the company is trading at a
+
+60
+00:00:56,310 --> 00:00:56,320
+that the company is trading at a
+ 
+
+61
+00:00:56,320 --> 00:00:58,790
+that the company is trading at a
+discount. We buy that stock and see
+
+62
+00:00:58,790 --> 00:00:58,800
+discount. We buy that stock and see
+ 
+
+63
+00:00:58,800 --> 00:01:00,990
+discount. We buy that stock and see
+outsized returns as the market value and
+
+64
+00:01:00,990 --> 00:01:01,000
+outsized returns as the market value and
+ 
+
+65
+00:01:01,000 --> 00:01:02,830
+outsized returns as the market value and
+public sentiment changes and the price
+
+66
+00:01:02,830 --> 00:01:02,840
+public sentiment changes and the price
+ 
+
+67
+00:01:02,840 --> 00:01:04,750
+public sentiment changes and the price
+recovers back to what it should be. This
+
+68
+00:01:04,750 --> 00:01:04,760
+recovers back to what it should be. This
+ 
+
+69
+00:01:04,760 --> 00:01:06,790
+recovers back to what it should be. This
+concept has inspired a lot of YouTube
+
+70
+00:01:06,790 --> 00:01:06,800
+concept has inspired a lot of YouTube
+ 
+
+71
+00:01:06,800 --> 00:01:08,630
+concept has inspired a lot of YouTube
+videos, some of which are created by
+
+72
+00:01:08,630 --> 00:01:08,640
+videos, some of which are created by
+ 
+
+73
+00:01:08,640 --> 00:01:11,470
+videos, some of which are created by
+very educated people, even with PhDs,
+
+74
+00:01:11,470 --> 00:01:11,480
+very educated people, even with PhDs,
+ 
+
+75
+00:01:11,480 --> 00:01:13,270
+very educated people, even with PhDs,
+and I've always wondered why nobody has
+
+76
+00:01:13,270 --> 00:01:13,280
+and I've always wondered why nobody has
+ 
+
+77
+00:01:13,280 --> 00:01:15,630
+and I've always wondered why nobody has
+back tested this to clearly state if it
+
+78
+00:01:15,630 --> 00:01:15,640
+back tested this to clearly state if it
+ 
+
+79
+00:01:15,640 --> 00:01:17,790
+back tested this to clearly state if it
+works or not. So, when one of them tells
+
+80
+00:01:17,790 --> 00:01:17,800
+works or not. So, when one of them tells
+ 
+
+81
+00:01:17,800 --> 00:01:19,990
+works or not. So, when one of them tells
+you it can't really be back tested,
+
+82
+00:01:19,990 --> 00:01:20,000
+you it can't really be back tested,
+ 
+
+83
+00:01:20,000 --> 00:01:22,230
+you it can't really be back tested,
+that's a lie. A strategy can always be
+
+84
+00:01:22,230 --> 00:01:22,240
+that's a lie. A strategy can always be
+ 
+
+85
+00:01:22,240 --> 00:01:24,390
+that's a lie. A strategy can always be
+back tested because a strategy is just a
+
+86
+00:01:24,390 --> 00:01:24,400
+back tested because a strategy is just a
+ 
+
+87
+00:01:24,400 --> 00:01:26,310
+back tested because a strategy is just a
+list of decisions, and a list of
+
+88
+00:01:26,310 --> 00:01:26,320
+list of decisions, and a list of
+ 
+
+89
+00:01:26,320 --> 00:01:29,150
+list of decisions, and a list of
+decisions is exactly what a coding back
+
+90
+00:01:29,150 --> 00:01:29,160
+decisions is exactly what a coding back
+ 
+
+91
+00:01:29,160 --> 00:01:31,110
+decisions is exactly what a coding back
+test is there to provide. These are the
+
+92
+00:01:31,110 --> 00:01:31,120
+test is there to provide. These are the
+ 
+
+93
+00:01:31,120 --> 00:01:33,070
+test is there to provide. These are the
+same excuses that some day traders use
+
+94
+00:01:33,070 --> 00:01:33,080
+same excuses that some day traders use
+ 
+
+95
+00:01:33,080 --> 00:01:34,310
+same excuses that some day traders use
+to keep their audience buying their
+
+96
+00:01:34,310 --> 00:01:34,320
+to keep their audience buying their
+ 
+
+97
+00:01:34,320 --> 00:01:36,550
+to keep their audience buying their
+courses so they can make money off their
+
+98
+00:01:36,550 --> 00:01:36,560
+courses so they can make money off their
+ 
+
+99
+00:01:36,560 --> 00:01:38,470
+courses so they can make money off their
+audience and not day trading. But,
+
+100
+00:01:38,470 --> 00:01:38,480
+audience and not day trading. But,
+ 
+
+101
+00:01:38,480 --> 00:01:40,470
+audience and not day trading. But,
+people still believe in value investing.
+
+102
+00:01:40,470 --> 00:01:40,480
+people still believe in value investing.
+ 
+
+103
+00:01:40,480 --> 00:01:42,110
+people still believe in value investing.
+The value investing Reddit thread has
+
+104
+00:01:42,110 --> 00:01:42,120
+The value investing Reddit thread has
+ 
+
+105
+00:01:42,120 --> 00:01:44,590
+The value investing Reddit thread has
+over 700,000 members, and people in my
+
+106
+00:01:44,590 --> 00:01:44,600
+over 700,000 members, and people in my
+ 
+
+107
+00:01:44,600 --> 00:01:45,990
+over 700,000 members, and people in my
+comments genuinely believe in the
+
+108
+00:01:45,990 --> 00:01:46,000
+comments genuinely believe in the
+ 
+
+109
+00:01:46,000 --> 00:01:48,150
+comments genuinely believe in the
+strategy. So, if it does work, then a
+
+110
+00:01:48,150 --> 00:01:48,160
+strategy. So, if it does work, then a
+ 
+
+111
+00:01:48,160 --> 00:01:49,790
+strategy. So, if it does work, then a
+simple back test should show above
+
+112
+00:01:49,790 --> 00:01:49,800
+simple back test should show above
+ 
+
+113
+00:01:49,800 --> 00:01:51,430
+simple back test should show above
+market returns. Otherwise, we should all
+
+114
+00:01:51,430 --> 00:01:51,440
+market returns. Otherwise, we should all
+ 
+
+115
+00:01:51,440 --> 00:01:53,350
+market returns. Otherwise, we should all
+just buy the S&P and go to bed. In my
+
+116
+00:01:53,350 --> 00:01:53,360
+just buy the S&P and go to bed. In my
+ 
+
+117
+00:01:53,360 --> 00:01:55,190
+just buy the S&P and go to bed. In my
+last video, I built a value investing
+
+118
+00:01:55,190 --> 00:01:55,200
+last video, I built a value investing
+ 
+
+119
+00:01:55,200 --> 00:01:57,150
+last video, I built a value investing
+bot that used a Graham method with
+
+120
+00:01:57,150 --> 00:01:57,160
+bot that used a Graham method with
+ 
+
+121
+00:01:57,160 --> 00:01:58,950
+bot that used a Graham method with
+company earnings, an estimate of the
+
+122
+00:01:58,950 --> 00:01:58,960
+company earnings, an estimate of the
+ 
+
+123
+00:01:58,960 --> 00:02:00,870
+company earnings, an estimate of the
+growth rate, and AAA bond yields to
+
+124
+00:02:00,870 --> 00:02:00,880
+growth rate, and AAA bond yields to
+ 
+
+125
+00:02:00,880 --> 00:02:03,350
+growth rate, and AAA bond yields to
+calculate a stock's intrinsic value. We
+
+126
+00:02:03,350 --> 00:02:03,360
+calculate a stock's intrinsic value. We
+ 
+
+127
+00:02:03,360 --> 00:02:05,670
+calculate a stock's intrinsic value. We
+then validated this by hand. Also, thank
+
+128
+00:02:05,670 --> 00:02:05,680
+then validated this by hand. Also, thank
+ 
+
+129
+00:02:05,680 --> 00:02:07,390
+then validated this by hand. Also, thank
+you to the commenter that suggested I do
+
+130
+00:02:07,390 --> 00:02:07,400
+you to the commenter that suggested I do
+ 
+
+131
+00:02:07,400 --> 00:02:09,070
+you to the commenter that suggested I do
+that to confirm that the model was
+
+132
+00:02:09,070 --> 00:02:09,080
+that to confirm that the model was
+ 
+
+133
+00:02:09,080 --> 00:02:11,230
+that to confirm that the model was
+indeed making correct calculations. But,
+
+134
+00:02:11,230 --> 00:02:11,240
+indeed making correct calculations. But,
+ 
+
+135
+00:02:11,240 --> 00:02:12,670
+indeed making correct calculations. But,
+it underperformed a buy and hold
+
+136
+00:02:12,670 --> 00:02:12,680
+it underperformed a buy and hold
+ 
+
+137
+00:02:12,680 --> 00:02:14,390
+it underperformed a buy and hold
+strategy. There were a bunch of comments
+
+138
+00:02:14,390 --> 00:02:14,400
+strategy. There were a bunch of comments
+ 
+
+139
+00:02:14,400 --> 00:02:15,870
+strategy. There were a bunch of comments
+that correctly pointed out some fatal
+
+140
+00:02:15,870 --> 00:02:15,880
+that correctly pointed out some fatal
+ 
+
+141
+00:02:15,880 --> 00:02:18,070
+that correctly pointed out some fatal
+flaws in the algorithm that I absolutely
+
+142
+00:02:18,070 --> 00:02:18,080
+flaws in the algorithm that I absolutely
+ 
+
+143
+00:02:18,080 --> 00:02:20,750
+flaws in the algorithm that I absolutely
+must fix because value investing maybe
+
+144
+00:02:20,750 --> 00:02:20,760
+must fix because value investing maybe
+ 
+
+145
+00:02:20,760 --> 00:02:22,350
+must fix because value investing maybe
+does work, and I'm just being a negative
+
+146
+00:02:22,350 --> 00:02:22,360
+does work, and I'm just being a negative
+ 
+
+147
+00:02:22,360 --> 00:02:24,430
+does work, and I'm just being a negative
+Nancy. The sharpest critique of all was
+
+148
+00:02:24,430 --> 00:02:24,440
+Nancy. The sharpest critique of all was
+ 
+
+149
+00:02:24,440 --> 00:02:25,949
+Nancy. The sharpest critique of all was
+that my benchmark or what I was
+
+150
+00:02:25,949 --> 00:02:25,959
+that my benchmark or what I was
+ 
+
+151
+00:02:25,959 --> 00:02:28,390
+that my benchmark or what I was
+comparing our strategy to was super
+
+152
+00:02:28,390 --> 00:02:28,400
+comparing our strategy to was super
+ 
+
+153
+00:02:28,400 --> 00:02:30,830
+comparing our strategy to was super
+unfair. My stomach sunk when you simply
+
+154
+00:02:30,830 --> 00:02:30,840
+unfair. My stomach sunk when you simply
+ 
+
+155
+00:02:30,840 --> 00:02:32,790
+unfair. My stomach sunk when you simply
+removed the companies you couldn't
+
+156
+00:02:32,790 --> 00:02:32,800
+removed the companies you couldn't
+ 
+
+157
+00:02:32,800 --> 00:02:34,670
+removed the companies you couldn't
+calculate the fair value from your
+
+158
+00:02:34,670 --> 00:02:34,680
+calculate the fair value from your
+ 
+
+159
+00:02:34,680 --> 00:02:37,830
+calculate the fair value from your
+market portfolio. Lol. I had skipped
+
+160
+00:02:37,830 --> 00:02:37,840
+market portfolio. Lol. I had skipped
+ 
+
+161
+00:02:37,840 --> 00:02:39,350
+market portfolio. Lol. I had skipped
+stocks that I couldn't value with the
+
+162
+00:02:39,350 --> 00:02:39,360
+stocks that I couldn't value with the
+ 
+
+163
+00:02:39,360 --> 00:02:41,350
+stocks that I couldn't value with the
+Graham model. Maybe there wasn't enough
+
+164
+00:02:41,350 --> 00:02:41,360
+Graham model. Maybe there wasn't enough
+ 
+
+165
+00:02:41,360 --> 00:02:43,030
+Graham model. Maybe there wasn't enough
+data or the earnings reports were all
+
+166
+00:02:43,030 --> 00:02:43,040
+data or the earnings reports were all
+ 
+
+167
+00:02:43,040 --> 00:02:45,230
+data or the earnings reports were all
+zero, so I couldn't actually calculate
+
+168
+00:02:45,230 --> 00:02:45,240
+zero, so I couldn't actually calculate
+ 
+
+169
+00:02:45,240 --> 00:02:47,350
+zero, so I couldn't actually calculate
+an intrinsic value. But, instead of
+
+170
+00:02:47,350 --> 00:02:47,360
+an intrinsic value. But, instead of
+ 
+
+171
+00:02:47,360 --> 00:02:48,710
+an intrinsic value. But, instead of
+dropping them from the backtest, I
+
+172
+00:02:48,710 --> 00:02:48,720
+dropping them from the backtest, I
+ 
+
+173
+00:02:48,720 --> 00:02:50,510
+dropping them from the backtest, I
+actually left them in, which is
+
+174
+00:02:50,510 --> 00:02:50,520
+actually left them in, which is
+ 
+
+175
+00:02:50,520 --> 00:02:52,390
+actually left them in, which is
+definitely a big mistake. This is super
+
+176
+00:02:52,390 --> 00:02:52,400
+definitely a big mistake. This is super
+ 
+
+177
+00:02:52,400 --> 00:02:54,470
+definitely a big mistake. This is super
+unfair because those stocks could by
+
+178
+00:02:54,470 --> 00:02:54,480
+unfair because those stocks could by
+ 
+
+179
+00:02:54,480 --> 00:02:56,790
+unfair because those stocks could by
+chance performed really well, and I
+
+180
+00:02:56,790 --> 00:02:56,800
+chance performed really well, and I
+ 
+
+181
+00:02:56,800 --> 00:02:58,350
+chance performed really well, and I
+wasn't even allowing my strategy to
+
+182
+00:02:58,350 --> 00:02:58,360
+wasn't even allowing my strategy to
+ 
+
+183
+00:02:58,360 --> 00:03:00,430
+wasn't even allowing my strategy to
+choose them if it wanted to. So, if I
+
+184
+00:03:00,430 --> 00:03:00,440
+choose them if it wanted to. So, if I
+ 
+
+185
+00:03:00,440 --> 00:03:02,509
+choose them if it wanted to. So, if I
+can't calculate an intrinsic value for a
+
+186
+00:03:02,509 --> 00:03:02,519
+can't calculate an intrinsic value for a
+ 
+
+187
+00:03:02,519 --> 00:03:04,470
+can't calculate an intrinsic value for a
+particular ticker, I should drop that
+
+188
+00:03:04,470 --> 00:03:04,480
+particular ticker, I should drop that
+ 
+
+189
+00:03:04,480 --> 00:03:06,509
+particular ticker, I should drop that
+ticker from the benchmark. Now, before
+
+190
+00:03:06,509 --> 00:03:06,519
+ticker from the benchmark. Now, before
+ 
+
+191
+00:03:06,519 --> 00:03:08,070
+ticker from the benchmark. Now, before
+viewing the results of this improvement
+
+192
+00:03:08,070 --> 00:03:08,080
+viewing the results of this improvement
+ 
+
+193
+00:03:08,080 --> 00:03:09,710
+viewing the results of this improvement
+in the backtest, we should see where we
+
+194
+00:03:09,710 --> 00:03:09,720
+in the backtest, we should see where we
+ 
+
+195
+00:03:09,720 --> 00:03:11,630
+in the backtest, we should see where we
+left off from before. I'm using a
+
+196
+00:03:11,630 --> 00:03:11,640
+left off from before. I'm using a
+ 
+
+197
+00:03:11,640 --> 00:03:14,430
+left off from before. I'm using a
+discount factor of 50% here. So, we're
+
+198
+00:03:14,430 --> 00:03:14,440
+discount factor of 50% here. So, we're
+ 
+
+199
+00:03:14,440 --> 00:03:16,630
+discount factor of 50% here. So, we're
+only going to buy super cheap stocks.
+
+200
+00:03:16,630 --> 00:03:16,640
+only going to buy super cheap stocks.
+ 
+
+201
+00:03:16,640 --> 00:03:18,270
+only going to buy super cheap stocks.
+The green line is our value-based
+
+202
+00:03:18,270 --> 00:03:18,280
+The green line is our value-based
+ 
+
+203
+00:03:18,280 --> 00:03:20,430
+The green line is our value-based
+strategy, and the red line is what we're
+
+204
+00:03:20,430 --> 00:03:20,440
+strategy, and the red line is what we're
+ 
+
+205
+00:03:20,440 --> 00:03:22,350
+strategy, and the red line is what we're
+comparing to, which is an equal
+
+206
+00:03:22,350 --> 00:03:22,360
+comparing to, which is an equal
+ 
+
+207
+00:03:22,360 --> 00:03:23,630
+comparing to, which is an equal
+weighting of stocks from our
+
+208
+00:03:23,630 --> 00:03:23,640
+weighting of stocks from our
+ 
+
+209
+00:03:23,640 --> 00:03:26,590
+weighting of stocks from our
+reconstructed S&P 500 membership list.
+
+210
+00:03:26,590 --> 00:03:26,600
+reconstructed S&P 500 membership list.
+ 
+
+211
+00:03:26,600 --> 00:03:28,750
+reconstructed S&P 500 membership list.
+The white line is just the actual S&P
+
+212
+00:03:28,750 --> 00:03:28,760
+The white line is just the actual S&P
+ 
+
+213
+00:03:28,760 --> 00:03:31,070
+The white line is just the actual S&P
+500, and you can see that I actually did
+
+214
+00:03:31,070 --> 00:03:31,080
+500, and you can see that I actually did
+ 
+
+215
+00:03:31,080 --> 00:03:32,990
+500, and you can see that I actually did
+a terrible job at recreating it, and I
+
+216
+00:03:32,990 --> 00:03:33,000
+a terrible job at recreating it, and I
+ 
+
+217
+00:03:33,000 --> 00:03:34,750
+a terrible job at recreating it, and I
+clearly have a bunch of survivorship
+
+218
+00:03:34,750 --> 00:03:34,760
+clearly have a bunch of survivorship
+ 
+
+219
+00:03:34,760 --> 00:03:38,550
+clearly have a bunch of survivorship
+bias since my recreated S&P 500 list is
+
+220
+00:03:38,550 --> 00:03:38,560
+bias since my recreated S&P 500 list is
+ 
+
+221
+00:03:38,560 --> 00:03:40,229
+bias since my recreated S&P 500 list is
+actually [music] beating the actual S&P
+
+222
+00:03:40,229 --> 00:03:40,239
+actually [music] beating the actual S&P
+ 
+
+223
+00:03:40,239 --> 00:03:43,470
+actually [music] beating the actual S&P
+500. Anyways, it seems that between 2000
+
+224
+00:03:43,470 --> 00:03:43,480
+500. Anyways, it seems that between 2000
+ 
+
+225
+00:03:43,480 --> 00:03:45,870
+500. Anyways, it seems that between 2000
+and 2002, the value-based strategy shown
+
+226
+00:03:45,870 --> 00:03:45,880
+and 2002, the value-based strategy shown
+ 
+
+227
+00:03:45,880 --> 00:03:47,430
+and 2002, the value-based strategy shown
+in green actually did really, really
+
+228
+00:03:47,430 --> 00:03:47,440
+in green actually did really, really
+ 
+
+229
+00:03:47,440 --> 00:03:49,509
+in green actually did really, really
+well. Well, sort of. Up until the point
+
+230
+00:03:49,509 --> 00:03:49,519
+well. Well, sort of. Up until the point
+ 
+
+231
+00:03:49,519 --> 00:03:51,270
+well. Well, sort of. Up until the point
+that stocks recovered to their intrinsic
+
+232
+00:03:51,270 --> 00:03:51,280
+that stocks recovered to their intrinsic
+ 
+
+233
+00:03:51,280 --> 00:03:53,790
+that stocks recovered to their intrinsic
+value, the algorithm then sold them all,
+
+234
+00:03:53,790 --> 00:03:53,800
+value, the algorithm then sold them all,
+ 
+
+235
+00:03:53,800 --> 00:03:55,830
+value, the algorithm then sold them all,
+and we basically found no cheap stocks
+
+236
+00:03:55,830 --> 00:03:55,840
+and we basically found no cheap stocks
+ 
+
+237
+00:03:55,840 --> 00:03:57,350
+and we basically found no cheap stocks
+for the next two decades. The
+
+238
+00:03:57,350 --> 00:03:57,360
+for the next two decades. The
+ 
+
+239
+00:03:57,360 --> 00:03:59,070
+for the next two decades. The
+value-based strategy achieved an
+
+240
+00:03:59,070 --> 00:03:59,080
+value-based strategy achieved an
+ 
+
+241
+00:03:59,080 --> 00:04:01,670
+value-based strategy achieved an
+annualized return of 0.9%
+
+242
+00:04:01,670 --> 00:04:01,680
+annualized return of 0.9%
+ 
+
+243
+00:04:01,680 --> 00:04:04,230
+annualized return of 0.9%
+and our S&P 500 membership list, or the
+
+244
+00:04:04,230 --> 00:04:04,240
+and our S&P 500 membership list, or the
+ 
+
+245
+00:04:04,240 --> 00:04:07,350
+and our S&P 500 membership list, or the
+buy and hold strategy, achieved 8.6%.
+
+246
+00:04:07,350 --> 00:04:07,360
+buy and hold strategy, achieved 8.6%.
+ 
+
+247
+00:04:07,360 --> 00:04:09,470
+buy and hold strategy, achieved 8.6%.
+So, this is pretty bad, but how does it
+
+248
+00:04:09,470 --> 00:04:09,480
+So, this is pretty bad, but how does it
+ 
+
+249
+00:04:09,480 --> 00:04:11,670
+So, this is pretty bad, but how does it
+fare with our improvement? Let's now
+
+250
+00:04:11,670 --> 00:04:11,680
+fare with our improvement? Let's now
+ 
+
+251
+00:04:11,680 --> 00:04:13,310
+fare with our improvement? Let's now
+look at the back test where we remove
+
+252
+00:04:13,310 --> 00:04:13,320
+look at the back test where we remove
+ 
+
+253
+00:04:13,320 --> 00:04:14,910
+look at the back test where we remove
+stocks we can't quantify with the
+
+254
+00:04:14,910 --> 00:04:14,920
+stocks we can't quantify with the
+ 
+
+255
+00:04:14,920 --> 00:04:17,110
+stocks we can't quantify with the
+intrinsic value formula. Recall that our
+
+256
+00:04:17,110 --> 00:04:17,120
+intrinsic value formula. Recall that our
+ 
+
+257
+00:04:17,120 --> 00:04:19,390
+intrinsic value formula. Recall that our
+fix should only change the benchmark in
+
+258
+00:04:19,390 --> 00:04:19,400
+fix should only change the benchmark in
+ 
+
+259
+00:04:19,400 --> 00:04:21,270
+fix should only change the benchmark in
+red since we're dropping companies that
+
+260
+00:04:21,270 --> 00:04:21,280
+red since we're dropping companies that
+ 
+
+261
+00:04:21,280 --> 00:04:23,470
+red since we're dropping companies that
+we can't calculate a Graham value for.
+
+262
+00:04:23,470 --> 00:04:23,480
+we can't calculate a Graham value for.
+ 
+
+263
+00:04:23,480 --> 00:04:24,590
+we can't calculate a Graham value for.
+So, this will have no effect on the
+
+264
+00:04:24,590 --> 00:04:24,600
+So, this will have no effect on the
+ 
+
+265
+00:04:24,600 --> 00:04:26,630
+So, this will have no effect on the
+intrinsic value back test itself, but
+
+266
+00:04:26,630 --> 00:04:26,640
+intrinsic value back test itself, but
+ 
+
+267
+00:04:26,640 --> 00:04:28,390
+intrinsic value back test itself, but
+only the comparison that we're making.
+
+268
+00:04:28,390 --> 00:04:28,400
+only the comparison that we're making.
+ 
+
+269
+00:04:28,400 --> 00:04:30,310
+only the comparison that we're making.
+And because of that, the value strategy
+
+270
+00:04:30,310 --> 00:04:30,320
+And because of that, the value strategy
+ 
+
+271
+00:04:30,320 --> 00:04:32,750
+And because of that, the value strategy
+returns stayed the same at 0.9%
+
+272
+00:04:32,750 --> 00:04:32,760
+returns stayed the same at 0.9%
+ 
+
+273
+00:04:32,760 --> 00:04:37,430
+returns stayed the same at 0.9%
+annualized, but the baseline was 8.55%.
+
+274
+00:04:37,430 --> 00:04:37,440
+annualized, but the baseline was 8.55%.
+ 
+
+275
+00:04:37,440 --> 00:04:39,230
+annualized, but the baseline was 8.55%.
+So, it actually didn't really change
+
+276
+00:04:39,230 --> 00:04:39,240
+So, it actually didn't really change
+ 
+
+277
+00:04:39,240 --> 00:04:41,270
+So, it actually didn't really change
+that much. But, I mean, this is a better
+
+278
+00:04:41,270 --> 00:04:41,280
+that much. But, I mean, this is a better
+ 
+
+279
+00:04:41,280 --> 00:04:43,350
+that much. But, I mean, this is a better
+back test, right? Anyways, let's move
+
+280
+00:04:43,350 --> 00:04:43,360
+back test, right? Anyways, let's move
+ 
+
+281
+00:04:43,360 --> 00:04:45,950
+back test, right? Anyways, let's move
+on. Last time, I hard-coded a 50%
+
+282
+00:04:45,950 --> 00:04:45,960
+on. Last time, I hard-coded a 50%
+ 
+
+283
+00:04:45,960 --> 00:04:47,550
+on. Last time, I hard-coded a 50%
+discount to make sure that we are buying
+
+284
+00:04:47,550 --> 00:04:47,560
+discount to make sure that we are buying
+ 
+
+285
+00:04:47,560 --> 00:04:49,590
+discount to make sure that we are buying
+super cheap stocks. And two of you
+
+286
+00:04:49,590 --> 00:04:49,600
+super cheap stocks. And two of you
+ 
+
+287
+00:04:49,600 --> 00:04:51,270
+super cheap stocks. And two of you
+pointed out that it's a little bit
+
+288
+00:04:51,270 --> 00:04:51,280
+pointed out that it's a little bit
+ 
+
+289
+00:04:51,280 --> 00:04:52,110
+pointed out that it's a little bit
+arbitrary.
+
+290
+00:04:52,110 --> 00:04:52,120
+arbitrary.
+ 
+
+291
+00:04:52,120 --> 00:04:54,110
+arbitrary.
+>> Try other range, for example, instead of
+
+292
+00:04:54,110 --> 00:04:54,120
+>> Try other range, for example, instead of
+ 
+
+293
+00:04:54,120 --> 00:04:56,110
+>> Try other range, for example, instead of
+buying discount is greater than 50%, try
+
+294
+00:04:56,110 --> 00:04:56,120
+buying discount is greater than 50%, try
+ 
+
+295
+00:04:56,120 --> 00:04:58,950
+buying discount is greater than 50%, try
+discount within 0 50% or instead of is
+
+296
+00:04:58,950 --> 00:04:58,960
+discount within 0 50% or instead of is
+ 
+
+297
+00:04:58,960 --> 00:05:01,870
+discount within 0 50% or instead of is
+greater than 90%, try other 10% range.
+
+298
+00:05:01,870 --> 00:05:01,880
+greater than 90%, try other 10% range.
+ 
+
+299
+00:05:01,880 --> 00:05:03,950
+greater than 90%, try other 10% range.
+>> So, instead, we could rank stocks by how
+
+300
+00:05:03,950 --> 00:05:03,960
+>> So, instead, we could rank stocks by how
+ 
+
+301
+00:05:03,960 --> 00:05:06,230
+>> So, instead, we could rank stocks by how
+discounted they are and then just buy
+
+302
+00:05:06,230 --> 00:05:06,240
+discounted they are and then just buy
+ 
+
+303
+00:05:06,240 --> 00:05:08,190
+discounted they are and then just buy
+the cheapest. And at first, it sort of
+
+304
+00:05:08,190 --> 00:05:08,200
+the cheapest. And at first, it sort of
+ 
+
+305
+00:05:08,200 --> 00:05:10,550
+the cheapest. And at first, it sort of
+looks like the strategy is working until
+
+306
+00:05:10,550 --> 00:05:10,560
+looks like the strategy is working until
+ 
+
+307
+00:05:10,560 --> 00:05:12,909
+looks like the strategy is working until
+it fails terribly. Yeah, I don't even
+
+308
+00:05:12,909 --> 00:05:12,919
+it fails terribly. Yeah, I don't even
+ 
+
+309
+00:05:12,919 --> 00:05:14,310
+it fails terribly. Yeah, I don't even
+really know what to say about this one.
+
+310
+00:05:14,310 --> 00:05:14,320
+really know what to say about this one.
+ 
+
+311
+00:05:14,320 --> 00:05:16,630
+really know what to say about this one.
+It just didn't work. The total return of
+
+312
+00:05:16,630 --> 00:05:16,640
+It just didn't work. The total return of
+ 
+
+313
+00:05:16,640 --> 00:05:18,150
+It just didn't work. The total return of
+the cheapest stock over this time
+
+314
+00:05:18,150 --> 00:05:18,160
+the cheapest stock over this time
+ 
+
+315
+00:05:18,160 --> 00:05:20,909
+the cheapest stock over this time
+horizon was minus 92.9%
+
+316
+00:05:20,909 --> 00:05:20,919
+horizon was minus 92.9%
+ 
+
+317
+00:05:20,919 --> 00:05:22,750
+horizon was minus 92.9%
+or minus 9.46% [music]
+
+318
+00:05:22,750 --> 00:05:22,760
+or minus 9.46% [music]
+ 
+
+319
+00:05:22,760 --> 00:05:24,430
+or minus 9.46% [music]
+annualized. But, there is a bit of a
+
+320
+00:05:24,430 --> 00:05:24,440
+annualized. But, there is a bit of a
+ 
+
+321
+00:05:24,440 --> 00:05:26,150
+annualized. But, there is a bit of a
+trap here. Manually tweaking the
+
+322
+00:05:26,150 --> 00:05:26,160
+trap here. Manually tweaking the
+ 
+
+323
+00:05:26,160 --> 00:05:27,670
+trap here. Manually tweaking the
+discount until it looks good is
+
+324
+00:05:27,670 --> 00:05:27,680
+discount until it looks good is
+ 
+
+325
+00:05:27,680 --> 00:05:29,430
+discount until it looks good is
+effectively just hand-operated
+
+326
+00:05:29,430 --> 00:05:29,440
+effectively just hand-operated
+ 
+
+327
+00:05:29,440 --> 00:05:31,470
+effectively just hand-operated
+overfitting, and the cheapest stock is
+
+328
+00:05:31,470 --> 00:05:31,480
+overfitting, and the cheapest stock is
+ 
+
+329
+00:05:31,480 --> 00:05:32,990
+overfitting, and the cheapest stock is
+also not always the best one. There
+
+330
+00:05:32,990 --> 00:05:33,000
+also not always the best one. There
+ 
+
+331
+00:05:33,000 --> 00:05:34,670
+also not always the best one. There
+could be a systematic flaw in the
+
+332
+00:05:34,670 --> 00:05:34,680
+could be a systematic flaw in the
+ 
+
+333
+00:05:34,680 --> 00:05:36,550
+could be a systematic flaw in the
+company we've selected. So, how about
+
+334
+00:05:36,550 --> 00:05:36,560
+company we've selected. So, how about
+ 
+
+335
+00:05:36,560 --> 00:05:39,070
+company we've selected. So, how about
+this? Let's try every single discount
+
+336
+00:05:39,070 --> 00:05:39,080
+this? Let's try every single discount
+ 
+
+337
+00:05:39,080 --> 00:05:41,230
+this? Let's try every single discount
+factor. And here you go. These are the
+
+338
+00:05:41,230 --> 00:05:41,240
+factor. And here you go. These are the
+ 
+
+339
+00:05:41,240 --> 00:05:43,230
+factor. And here you go. These are the
+returns as a function of the discount
+
+340
+00:05:43,230 --> 00:05:43,240
+returns as a function of the discount
+ 
+
+341
+00:05:43,240 --> 00:05:45,830
+returns as a function of the discount
+factor. There are literally no strategy
+
+342
+00:05:45,830 --> 00:05:45,840
+factor. There are literally no strategy
+ 
+
+343
+00:05:45,840 --> 00:05:47,990
+factor. There are literally no strategy
+returns shown in green that beat our
+
+344
+00:05:47,990 --> 00:05:48,000
+returns shown in green that beat our
+ 
+
+345
+00:05:48,000 --> 00:05:49,950
+returns shown in green that beat our
+baseline shown in red. [music] And also,
+
+346
+00:05:49,950 --> 00:05:49,960
+baseline shown in red. [music] And also,
+ 
+
+347
+00:05:49,960 --> 00:05:51,870
+baseline shown in red. [music] And also,
+yes, just a reminder that we are beating
+
+348
+00:05:51,870 --> 00:05:51,880
+yes, just a reminder that we are beating
+ 
+
+349
+00:05:51,880 --> 00:05:53,694
+yes, just a reminder that we are beating
+the S&P 500 over this time horizon,
+
+350
+00:05:53,694 --> 00:05:53,704
+the S&P 500 over this time horizon,
+ 
+
+351
+00:05:53,704 --> 00:05:55,790
+the S&P 500 over this time horizon,
+[music] but slow down. We're actually
+
+352
+00:05:55,790 --> 00:05:55,800
+[music] but slow down. We're actually
+ 
+
+353
+00:05:55,800 --> 00:05:57,790
+[music] but slow down. We're actually
+comparing to the red line because that's
+
+354
+00:05:57,790 --> 00:05:57,800
+comparing to the red line because that's
+ 
+
+355
+00:05:57,800 --> 00:05:59,230
+comparing to the red line because that's
+the return of the tickers in our
+
+356
+00:05:59,230 --> 00:05:59,240
+the return of the tickers in our
+ 
+
+357
+00:05:59,240 --> 00:06:01,630
+the return of the tickers in our
+database. That's the benchmark. The top
+
+358
+00:06:01,630 --> 00:06:01,640
+database. That's the benchmark. The top
+ 
+
+359
+00:06:01,640 --> 00:06:03,510
+database. That's the benchmark. The top
+technical comment in my last video said
+
+360
+00:06:03,510 --> 00:06:03,520
+technical comment in my last video said
+ 
+
+361
+00:06:03,520 --> 00:06:05,430
+technical comment in my last video said
+that equity curves alone are not enough
+
+362
+00:06:05,430 --> 00:06:05,440
+that equity curves alone are not enough
+ 
+
+363
+00:06:05,440 --> 00:06:06,830
+that equity curves alone are not enough
+and I completely agree.
+
+364
+00:06:06,830 --> 00:06:06,840
+and I completely agree.
+ 
+
+365
+00:06:06,840 --> 00:06:08,830
+and I completely agree.
+>> Please compare some sort of performance
+
+366
+00:06:08,830 --> 00:06:08,840
+>> Please compare some sort of performance
+ 
+
+367
+00:06:08,840 --> 00:06:09,710
+>> Please compare some sort of performance
+metrics.
+
+368
+00:06:09,710 --> 00:06:09,720
+metrics.
+ 
+
+369
+00:06:09,720 --> 00:06:11,230
+metrics.
+>> We need to show the risk-adjusted
+
+370
+00:06:11,230 --> 00:06:11,240
+>> We need to show the risk-adjusted
+ 
+
+371
+00:06:11,240 --> 00:06:12,990
+>> We need to show the risk-adjusted
+performance of the strategy.
+
+372
+00:06:12,990 --> 00:06:13,000
+performance of the strategy.
+ 
+
+373
+00:06:13,000 --> 00:06:15,030
+performance of the strategy.
+Specifically, we need to use the Sortino
+
+374
+00:06:15,030 --> 00:06:15,040
+Specifically, we need to use the Sortino
+ 
+
+375
+00:06:15,040 --> 00:06:17,310
+Specifically, we need to use the Sortino
+ratio. Now, the Sortino ratio measures
+
+376
+00:06:17,310 --> 00:06:17,320
+ratio. Now, the Sortino ratio measures
+ 
+
+377
+00:06:17,320 --> 00:06:18,950
+ratio. Now, the Sortino ratio measures
+the risk-adjusted return of an
+
+378
+00:06:18,950 --> 00:06:18,960
+the risk-adjusted return of an
+ 
+
+379
+00:06:18,960 --> 00:06:20,990
+the risk-adjusted return of an
+investment portfolio, but unlike other
+
+380
+00:06:20,990 --> 00:06:21,000
+investment portfolio, but unlike other
+ 
+
+381
+00:06:21,000 --> 00:06:23,110
+investment portfolio, but unlike other
+metrics, it only penalizes downside
+
+382
+00:06:23,110 --> 00:06:23,120
+metrics, it only penalizes downside
+ 
+
+383
+00:06:23,120 --> 00:06:25,110
+metrics, it only penalizes downside
+volatility. And yeah, I know this sounds
+
+384
+00:06:25,110 --> 00:06:25,120
+volatility. And yeah, I know this sounds
+ 
+
+385
+00:06:25,120 --> 00:06:26,670
+volatility. And yeah, I know this sounds
+super boring, but I promise it's
+
+386
+00:06:26,670 --> 00:06:26,680
+super boring, but I promise it's
+ 
+
+387
+00:06:26,680 --> 00:06:28,070
+super boring, but I promise it's
+actually rather straightforward and is a
+
+388
+00:06:28,070 --> 00:06:28,080
+actually rather straightforward and is a
+ 
+
+389
+00:06:28,080 --> 00:06:29,909
+actually rather straightforward and is a
+concept you can apply to everything in
+
+390
+00:06:29,909 --> 00:06:29,919
+concept you can apply to everything in
+ 
+
+391
+00:06:29,919 --> 00:06:31,550
+concept you can apply to everything in
+your life. Now, you may wonder, why do
+
+392
+00:06:31,550 --> 00:06:31,560
+your life. Now, you may wonder, why do
+ 
+
+393
+00:06:31,560 --> 00:06:33,750
+your life. Now, you may wonder, why do
+we care about risk-adjusted returns?
+
+394
+00:06:33,750 --> 00:06:33,760
+we care about risk-adjusted returns?
+ 
+
+395
+00:06:33,760 --> 00:06:34,909
+we care about risk-adjusted returns?
+>> Boring.
+
+396
+00:06:34,909 --> 00:06:34,919
+>> Boring.
+ 
+
+397
+00:06:34,919 --> 00:06:36,670
+>> Boring.
+>> I only care about the returns, right? I
+
+398
+00:06:36,670 --> 00:06:36,680
+>> I only care about the returns, right? I
+ 
+
+399
+00:06:36,680 --> 00:06:38,070
+>> I only care about the returns, right? I
+mean, that's the only thing that matters
+
+400
+00:06:38,070 --> 00:06:38,080
+mean, that's the only thing that matters
+ 
+
+401
+00:06:38,080 --> 00:06:39,990
+mean, that's the only thing that matters
+to me. And at first, that's what I
+
+402
+00:06:39,990 --> 00:06:40,000
+to me. And at first, that's what I
+ 
+
+403
+00:06:40,000 --> 00:06:41,990
+to me. And at first, that's what I
+thought, too, but it's not quite true.
+
+404
+00:06:41,990 --> 00:06:42,000
+thought, too, but it's not quite true.
+ 
+
+405
+00:06:42,000 --> 00:06:44,150
+thought, too, but it's not quite true.
+Because in making a high return, there
+
+406
+00:06:44,150 --> 00:06:44,160
+Because in making a high return, there
+ 
+
+407
+00:06:44,160 --> 00:06:46,150
+Because in making a high return, there
+was some risk involved in that trade.
+
+408
+00:06:46,150 --> 00:06:46,160
+was some risk involved in that trade.
+ 
+
+409
+00:06:46,160 --> 00:06:47,909
+was some risk involved in that trade.
+Now, let's say for example that you
+
+410
+00:06:47,909 --> 00:06:47,919
+Now, let's say for example that you
+ 
+
+411
+00:06:47,919 --> 00:06:50,190
+Now, let's say for example that you
+invest $1 million
+
+412
+00:06:50,190 --> 00:06:50,200
+invest $1 million
+ 
+
+413
+00:06:50,200 --> 00:06:52,350
+invest $1 million
+and there's a 50% chance that you see a
+
+414
+00:06:52,350 --> 00:06:52,360
+and there's a 50% chance that you see a
+ 
+
+415
+00:06:52,360 --> 00:06:55,830
+and there's a 50% chance that you see a
+100% return. So, then it becomes $2
+
+416
+00:06:55,830 --> 00:06:55,840
+100% return. So, then it becomes $2
+ 
+
+417
+00:06:55,840 --> 00:06:56,870
+100% return. So, then it becomes $2
+million,
+
+418
+00:06:56,870 --> 00:06:56,880
+million,
+ 
+
+419
+00:06:56,880 --> 00:06:59,510
+million,
+but there's also a 50% chance that you
+
+420
+00:06:59,510 --> 00:06:59,520
+but there's also a 50% chance that you
+ 
+
+421
+00:06:59,520 --> 00:07:01,390
+but there's also a 50% chance that you
+lose it all. Let's say that you come out
+
+422
+00:07:01,390 --> 00:07:01,400
+lose it all. Let's say that you come out
+ 
+
+423
+00:07:01,400 --> 00:07:03,870
+lose it all. Let's say that you come out
+of the other end with a favorable trade
+
+424
+00:07:03,870 --> 00:07:03,880
+of the other end with a favorable trade
+ 
+
+425
+00:07:03,880 --> 00:07:06,110
+of the other end with a favorable trade
+and you do get that 100% return. [music]
+
+426
+00:07:06,110 --> 00:07:06,120
+and you do get that 100% return. [music]
+ 
+
+427
+00:07:06,120 --> 00:07:08,150
+and you do get that 100% return. [music]
+Congrats, but you can't neglect the fact
+
+428
+00:07:08,150 --> 00:07:08,160
+Congrats, but you can't neglect the fact
+ 
+
+429
+00:07:08,160 --> 00:07:10,630
+Congrats, but you can't neglect the fact
+that you took a 50% chance of losing all
+
+430
+00:07:10,630 --> 00:07:10,640
+that you took a 50% chance of losing all
+ 
+
+431
+00:07:10,640 --> 00:07:12,430
+that you took a 50% chance of losing all
+of your money. You tell yourself that
+
+432
+00:07:12,430 --> 00:07:12,440
+of your money. You tell yourself that
+ 
+
+433
+00:07:12,440 --> 00:07:13,790
+of your money. You tell yourself that
+you will keep betting your winnings
+
+434
+00:07:13,790 --> 00:07:13,800
+you will keep betting your winnings
+ 
+
+435
+00:07:13,800 --> 00:07:15,190
+you will keep betting your winnings
+because the first time you did it, you
+
+436
+00:07:15,190 --> 00:07:15,200
+because the first time you did it, you
+ 
+
+437
+00:07:15,200 --> 00:07:17,950
+because the first time you did it, you
+got a 100% return. It was great. That
+
+438
+00:07:17,950 --> 00:07:17,960
+got a 100% return. It was great. That
+ 
+
+439
+00:07:17,960 --> 00:07:20,110
+got a 100% return. It was great. That
+same trade over many trades would
+
+440
+00:07:20,110 --> 00:07:20,120
+same trade over many trades would
+ 
+
+441
+00:07:20,120 --> 00:07:22,430
+same trade over many trades would
+guarantee that you do lose all of your
+
+442
+00:07:22,430 --> 00:07:22,440
+guarantee that you do lose all of your
+ 
+
+443
+00:07:22,440 --> 00:07:24,430
+guarantee that you do lose all of your
+money because the single time that you
+
+444
+00:07:24,430 --> 00:07:24,440
+money because the single time that you
+ 
+
+445
+00:07:24,440 --> 00:07:26,470
+money because the single time that you
+land on the other side of that 50%
+
+446
+00:07:26,470 --> 00:07:26,480
+land on the other side of that 50%
+ 
+
+447
+00:07:26,480 --> 00:07:28,870
+land on the other side of that 50%
+chance, your portfolio goes to zero.
+
+448
+00:07:28,870 --> 00:07:28,880
+chance, your portfolio goes to zero.
+ 
+
+449
+00:07:28,880 --> 00:07:30,510
+chance, your portfolio goes to zero.
+Even though you won and your return was
+
+450
+00:07:30,510 --> 00:07:30,520
+Even though you won and your return was
+ 
+
+451
+00:07:30,520 --> 00:07:33,710
+Even though you won and your return was
+100%, the risk-adjusted return of that
+
+452
+00:07:33,710 --> 00:07:33,720
+100%, the risk-adjusted return of that
+ 
+
+453
+00:07:33,720 --> 00:07:36,750
+100%, the risk-adjusted return of that
+trade is actually minus 100% because
+
+454
+00:07:36,750 --> 00:07:36,760
+trade is actually minus 100% because
+ 
+
+455
+00:07:36,760 --> 00:07:38,630
+trade is actually minus 100% because
+you're statistically guaranteed, if you
+
+456
+00:07:38,630 --> 00:07:38,640
+you're statistically guaranteed, if you
+ 
+
+457
+00:07:38,640 --> 00:07:40,830
+you're statistically guaranteed, if you
+take that bet enough, to lose
+
+458
+00:07:40,830 --> 00:07:40,840
+take that bet enough, to lose
+ 
+
+459
+00:07:40,840 --> 00:07:42,710
+take that bet enough, to lose
+everything. So, we should always factor
+
+460
+00:07:42,710 --> 00:07:42,720
+everything. So, we should always factor
+ 
+
+461
+00:07:42,720 --> 00:07:44,510
+everything. So, we should always factor
+in risk into our investments, which is
+
+462
+00:07:44,510 --> 00:07:44,520
+in risk into our investments, which is
+ 
+
+463
+00:07:44,520 --> 00:07:46,190
+in risk into our investments, which is
+usually characterized by market
+
+464
+00:07:46,190 --> 00:07:46,200
+usually characterized by market
+ 
+
+465
+00:07:46,200 --> 00:07:48,390
+usually characterized by market
+volatility. Our Graham strategy has a
+
+466
+00:07:48,390 --> 00:07:48,400
+volatility. Our Graham strategy has a
+ 
+
+467
+00:07:48,400 --> 00:07:51,510
+volatility. Our Graham strategy has a
+Sortino ratio of 0.171.
+
+468
+00:07:51,510 --> 00:07:51,520
+Sortino ratio of 0.171.
+ 
+
+469
+00:07:51,520 --> 00:07:55,870
+Sortino ratio of 0.171.
+The S&P 500 buy and hold is 0.545.
+
+470
+00:07:55,870 --> 00:07:55,880
+The S&P 500 buy and hold is 0.545.
+ 
+
+471
+00:07:55,880 --> 00:07:58,310
+The S&P 500 buy and hold is 0.545.
+And our benchmark of S&P constituents is
+
+472
+00:07:58,310 --> 00:07:58,320
+And our benchmark of S&P constituents is
+ 
+
+473
+00:07:58,320 --> 00:08:00,190
+And our benchmark of S&P constituents is
+0.666.
+
+474
+00:08:00,190 --> 00:08:00,200
+0.666.
+ 
+
+475
+00:08:00,200 --> 00:08:02,350
+0.666.
+Oh lord. Our strategy is roughly three
+
+476
+00:08:02,350 --> 00:08:02,360
+Oh lord. Our strategy is roughly three
+ 
+
+477
+00:08:02,360 --> 00:08:04,590
+Oh lord. Our strategy is roughly three
+times worse on a risk-adjusted basis
+
+478
+00:08:04,590 --> 00:08:04,600
+times worse on a risk-adjusted basis
+ 
+
+479
+00:08:04,600 --> 00:08:06,590
+times worse on a risk-adjusted basis
+than simply buying and holding, which is
+
+480
+00:08:06,590 --> 00:08:06,600
+than simply buying and holding, which is
+ 
+
+481
+00:08:06,600 --> 00:08:08,710
+than simply buying and holding, which is
+pretty bad. And over a rolling one-year
+
+482
+00:08:08,710 --> 00:08:08,720
+pretty bad. And over a rolling one-year
+ 
+
+483
+00:08:08,720 --> 00:08:10,550
+pretty bad. And over a rolling one-year
+window, the strategy beats the S&P
+
+484
+00:08:10,550 --> 00:08:10,560
+window, the strategy beats the S&P
+ 
+
+485
+00:08:10,560 --> 00:08:13,950
+window, the strategy beats the S&P
+Sortino only about 34% of the time. This
+
+486
+00:08:13,950 --> 00:08:13,960
+Sortino only about 34% of the time. This
+ 
+
+487
+00:08:13,960 --> 00:08:15,510
+Sortino only about 34% of the time. This
+strategy only worked well during the
+
+488
+00:08:15,510 --> 00:08:15,520
+strategy only worked well during the
+ 
+
+489
+00:08:15,520 --> 00:08:18,190
+strategy only worked well during the
+2008 market crash, and that basically
+
+490
+00:08:18,190 --> 00:08:18,200
+2008 market crash, and that basically
+ 
+
+491
+00:08:18,200 --> 00:08:19,909
+2008 market crash, and that basically
+tells you nothing. And I'm not saying
+
+492
+00:08:19,909 --> 00:08:19,919
+tells you nothing. And I'm not saying
+ 
+
+493
+00:08:19,919 --> 00:08:21,390
+tells you nothing. And I'm not saying
+that this will never work. I'm just
+
+494
+00:08:21,390 --> 00:08:21,400
+that this will never work. I'm just
+ 
+
+495
+00:08:21,400 --> 00:08:23,190
+that this will never work. I'm just
+saying that the current strategy is not
+
+496
+00:08:23,190 --> 00:08:23,200
+saying that the current strategy is not
+ 
+
+497
+00:08:23,200 --> 00:08:25,110
+saying that the current strategy is not
+sufficient. But, I encourage you to
+
+498
+00:08:25,110 --> 00:08:25,120
+sufficient. But, I encourage you to
+ 
+
+499
+00:08:25,120 --> 00:08:26,870
+sufficient. But, I encourage you to
+leave comments below describing what you
+
+500
+00:08:26,870 --> 00:08:26,880
+leave comments below describing what you
+ 
+
+501
+00:08:26,880 --> 00:08:28,830
+leave comments below describing what you
+could test or what I'm getting wrong,
+
+502
+00:08:28,830 --> 00:08:28,840
+could test or what I'm getting wrong,
+ 
+
+503
+00:08:28,840 --> 00:08:30,430
+could test or what I'm getting wrong,
+and then we can try to implement this in
+
+504
+00:08:30,430 --> 00:08:30,440
+and then we can try to implement this in
+ 
+
+505
+00:08:30,440 --> 00:08:31,950
+and then we can try to implement this in
+a future video and improve the
+
+506
+00:08:31,950 --> 00:08:31,960
+a future video and improve the
+ 
+
+507
+00:08:31,960 --> 00:08:33,790
+a future video and improve the
+algorithm. So, if value investing
+
+508
+00:08:33,790 --> 00:08:33,800
+algorithm. So, if value investing
+ 
+
+509
+00:08:33,800 --> 00:08:35,589
+algorithm. So, if value investing
+doesn't work anymore, why do people keep
+
+510
+00:08:35,589 --> 00:08:35,599
+doesn't work anymore, why do people keep
+ 
+
+511
+00:08:35,599 --> 00:08:37,630
+doesn't work anymore, why do people keep
+making videos about it implying that it
+
+512
+00:08:37,630 --> 00:08:37,640
+making videos about it implying that it
+ 
+
+513
+00:08:37,640 --> 00:08:39,670
+making videos about it implying that it
+does? Now, I'm not a drama channel, so
+
+514
+00:08:39,670 --> 00:08:39,680
+does? Now, I'm not a drama channel, so
+ 
+
+515
+00:08:39,680 --> 00:08:40,830
+does? Now, I'm not a drama channel, so
+I'm going to stay clear of calling
+
+516
+00:08:40,830 --> 00:08:40,840
+I'm going to stay clear of calling
+ 
+
+517
+00:08:40,840 --> 00:08:42,709
+I'm going to stay clear of calling
+people out, but I have a couple of
+
+518
+00:08:42,709 --> 00:08:42,719
+people out, but I have a couple of
+ 
+
+519
+00:08:42,719 --> 00:08:44,910
+people out, but I have a couple of
+theories. Firstly, it's that the decades
+
+520
+00:08:44,910 --> 00:08:44,920
+theories. Firstly, it's that the decades
+ 
+
+521
+00:08:44,920 --> 00:08:46,950
+theories. Firstly, it's that the decades
+of genuine success stories like Buffett
+
+522
+00:08:46,950 --> 00:08:46,960
+of genuine success stories like Buffett
+ 
+
+523
+00:08:46,960 --> 00:08:48,990
+of genuine success stories like Buffett
+give this method real credibility. It's
+
+524
+00:08:48,990 --> 00:08:49,000
+give this method real credibility. It's
+ 
+
+525
+00:08:49,000 --> 00:08:50,790
+give this method real credibility. It's
+also the perfect thing to sell people on
+
+526
+00:08:50,790 --> 00:08:50,800
+also the perfect thing to sell people on
+ 
+
+527
+00:08:50,800 --> 00:08:52,790
+also the perfect thing to sell people on
+and just sort of make sense. Stocks are
+
+528
+00:08:52,790 --> 00:08:52,800
+and just sort of make sense. Stocks are
+ 
+
+529
+00:08:52,800 --> 00:08:54,350
+and just sort of make sense. Stocks are
+cheap, and you should try to buy them
+
+530
+00:08:54,350 --> 00:08:54,360
+cheap, and you should try to buy them
+ 
+
+531
+00:08:54,360 --> 00:08:56,310
+cheap, and you should try to buy them
+cheap before they recover. And finally,
+
+532
+00:08:56,310 --> 00:08:56,320
+cheap before they recover. And finally,
+ 
+
+533
+00:08:56,320 --> 00:08:58,550
+cheap before they recover. And finally,
+you can't easily disprove it yourself
+
+534
+00:08:58,550 --> 00:08:58,560
+you can't easily disprove it yourself
+ 
+
+535
+00:08:58,560 --> 00:09:00,710
+you can't easily disprove it yourself
+unless you're degenerates like me and
+
+536
+00:09:00,710 --> 00:09:00,720
+unless you're degenerates like me and
+ 
+
+537
+00:09:00,720 --> 00:09:02,350
+unless you're degenerates like me and
+you and test it with code like we just
+
+538
+00:09:02,350 --> 00:09:02,360
+you and test it with code like we just
+ 
+
+539
+00:09:02,360 --> 00:09:04,390
+you and test it with code like we just
+did. So, my honest take is that value
+
+540
+00:09:04,390 --> 00:09:04,400
+did. So, my honest take is that value
+ 
+
+541
+00:09:04,400 --> 00:09:06,350
+did. So, my honest take is that value
+investing isn't a scam. It's just that
+
+542
+00:09:06,350 --> 00:09:06,360
+investing isn't a scam. It's just that
+ 
+
+543
+00:09:06,360 --> 00:09:08,270
+investing isn't a scam. It's just that
+the efficient market theory has caught
+
+544
+00:09:08,270 --> 00:09:08,280
+the efficient market theory has caught
+ 
+
+545
+00:09:08,280 --> 00:09:10,550
+the efficient market theory has caught
+up to it, and it's up to us to create
+
+546
+00:09:10,550 --> 00:09:10,560
+up to it, and it's up to us to create
+ 
+
+547
+00:09:10,560 --> 00:09:12,310
+up to it, and it's up to us to create
+different methodologies to find gaps
+
+548
+00:09:12,310 --> 00:09:12,320
+different methodologies to find gaps
+ 
+
+549
+00:09:12,320 --> 00:09:14,430
+different methodologies to find gaps
+that are present today. So, if you find
+
+550
+00:09:14,430 --> 00:09:14,440
+that are present today. So, if you find
+ 
+
+551
+00:09:14,440 --> 00:09:16,030
+that are present today. So, if you find
+something that looks interesting, I'll
+
+552
+00:09:16,030 --> 00:09:16,040
+something that looks interesting, I'll
+ 
+
+553
+00:09:16,040 --> 00:09:17,710
+something that looks interesting, I'll
+test it. We live in a new age of
+
+554
+00:09:17,710 --> 00:09:17,720
+test it. We live in a new age of
+ 
+
+555
+00:09:17,720 --> 00:09:19,550
+test it. We live in a new age of
+investing where complexity is scaling
+
+556
+00:09:19,550 --> 00:09:19,560
+investing where complexity is scaling
+ 
+
+557
+00:09:19,560 --> 00:09:21,870
+investing where complexity is scaling
+exponentially, meaning old opportunities
+
+558
+00:09:21,870 --> 00:09:21,880
+exponentially, meaning old opportunities
+ 
+
+559
+00:09:21,880 --> 00:09:23,390
+exponentially, meaning old opportunities
+fade and new opportunities are
+
+560
+00:09:23,390 --> 00:09:23,400
+fade and new opportunities are
+ 
+
+561
+00:09:23,400 --> 00:09:25,230
+fade and new opportunities are
+introduced. Take care, and I'll see you
+
+562
+00:09:25,230 --> 00:09:25,240
+introduced. Take care, and I'll see you
+ 
+
+563
+00:09:25,240 --> 00:09:28,240
+introduced. Take care, and I'll see you
+guys in the next one.
+

@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      # Retry the deploy: the Pages backend intermittently returns
+      # "try again later" on a green build; a bare failure emails noise.
+      - id: try1
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+      - if: steps.try1.outcome == 'failure'
+        continue-on-error: true
+        run: sleep 20
+      - id: try2
+        if: steps.try1.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+      - if: steps.try1.outcome == 'failure'
+        run: sleep 25
+      - id: deployment
+        if: steps.try1.outcome == 'failure'
+        uses: actions/deploy-pages@v4
